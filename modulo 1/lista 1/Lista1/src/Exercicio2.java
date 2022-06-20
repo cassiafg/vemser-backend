@@ -18,6 +18,7 @@ public class Exercicio2 {
         float nota4 = sc.nextFloat();
         sc.nextLine();
         float media = (nota1 + nota2 + nota3 + nota4)/4;
+        System.out.println("Média = " +media);
         if ((media > 0) && (media < 5)) {
             System.out.println("Reprovado");
         }else if ((media > 5.1) && (media < 6.9)) {
