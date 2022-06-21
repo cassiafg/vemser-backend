@@ -25,7 +25,6 @@ public class Exercicio3 {
             }else{
                 contador++;
             }
-            contador++;
             System.out.println("Digite a altura do jogador: ");
             alturaJogador = sc.nextFloat();
             sc.nextLine();
@@ -49,6 +48,11 @@ public class Exercicio3 {
                 maisPesado = nomeJogador;
             }
         }
+        System.out.println("Quantidade de jogadores cadastrados: "+contador);
+        System.out.println("Altura do maior jogador: "+maior+"m");
+        System.out.println("Jogador mais velho: "+maisVelho);
+        System.out.println("Jogador mais pesado "+maisPesado);
+        System.out.println("Média das alturas dos jogadores: "+media);
     }
 
 }
