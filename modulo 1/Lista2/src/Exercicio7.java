@@ -9,16 +9,14 @@ public class Exercicio7 {
                 {9, 10, 11, 12},
                 {13, 14, 15, 16},
         };
-        int contagem = 0;
-        for (int i = 0; i< matriz.length; i++)
-        {
-            for (int j = 0; j<matriz[i].length; j++)
-            {
+        int contador = 0;
+        for (int i = 0; i< matriz.length; i++){
+            for (int j = 0; j<matriz[i].length; j++){
                 if (matriz[i][j] > 10){
-                    contagem++;
+                    contador++;
                 }
             }
         }
-        System.out.println(contagem);
+        System.out.println("A matriz possui "+contador+" valores maiores que 10.");
     }
 }
