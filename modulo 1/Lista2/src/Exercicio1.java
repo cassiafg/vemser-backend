@@ -19,7 +19,7 @@ public class Exercicio1 {
         for (int i =0; i<10; i++){
             desconto += 0.05;
             valorComDesconto = valorProduto - (valorProduto*desconto);
-            System.out.println(i+1+"X R$ " + valorComDesconto + "= R$ "+ valorComDesconto*(i+1));
+            System.out.printf("%d X R$ %.2f = R$ %.2f%n",i+1, valorComDesconto, valorComDesconto*(i+1));
         }
 
 
