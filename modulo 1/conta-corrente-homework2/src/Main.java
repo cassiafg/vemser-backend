@@ -55,7 +55,9 @@ public class Main {
         conta1.depositar(500.00);
 
         //método transferir
+        conta1.transferir(conta2, 1000);
         conta2.transferir(conta1, 200);
+
 
         //método creditar taxa
         conta2.creditarTaxa();

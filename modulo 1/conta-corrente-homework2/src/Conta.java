@@ -57,6 +57,7 @@ public abstract class Conta implements Movimentacao{
             setSaldo(getSaldo()-valor);
             System.out.println("----------Saque----------");
             System.out.println("Valor: "+valor);
+            System.out.println("Conta: "+getNumeroConta());
             System.out.println("Saldo atual: "+getSaldo());
             return true;
         }else{
@@ -72,7 +73,7 @@ public abstract class Conta implements Movimentacao{
             System.out.println("----------Deposito----------");
             System.out.println("Valor: "+valor);
             System.out.println("Conta: "+getNumeroConta());
-            System.out.println("Saldo atual: "+getSaldo());
+            System.out.println("Saldo atual: "+this.getSaldo());
             return true;
         }else{
             System.out.println("Depósito não realizado");
@@ -82,14 +83,12 @@ public abstract class Conta implements Movimentacao{
 
     //transferir
     public boolean transferir (Conta conta, double valor){
-        if (valor <= this.getSaldo() && valor >0){
-            this.setSaldo(this.getSaldo()-valor);
-            conta.setSaldo(conta.getSaldo()+valor);
+        if (this.sacar(valor)){
+            conta.depositar(valor);
             System.out.println("----------Transferência----------");
             System.out.println("Valor: "+valor);
-            System.out.println("Conta de débito: "+this.getNumeroConta());
+            System.out.println("Conta de origem: "+this.getNumeroConta());
             System.out.println("Conta de destino: "+conta.getNumeroConta());
-            System.out.println("Saldo atual: "+this.getSaldo());
             return true;
         }else{
             System.out.println("Transferência não realizada");
