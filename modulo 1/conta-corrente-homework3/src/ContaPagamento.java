@@ -26,6 +26,26 @@ public class ContaPagamento extends Conta implements Impressao{
         }
     }
 
+    //método transferir sobrescrito
+    @Override
+    public boolean transferir (Conta conta, double valor) {
+        if (valor<=getSaldo() && valor >0) {
+            setSaldo(getSaldo()-valor);
+            System.out.println("----------Saque----------");
+            System.out.println("Valor: " + valor);
+            System.out.println("Saldo atual: " + getSaldo());
+            conta.depositar(valor);
+            System.out.println("----------Transferência----------");
+            System.out.println("Valor: " + valor);
+            System.out.println("Conta de origem: " + this.getNumeroConta());
+            System.out.println("Conta de destino: " + conta.getNumeroConta());
+            return true;
+        } else {
+            System.out.println("Transferência não realizada");
+            return false;
+        }
+    }
+
     //método impressão
     public void imprimir(){
         System.out.println("----------Conta Pagamento----------");

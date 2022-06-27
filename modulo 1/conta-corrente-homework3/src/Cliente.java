@@ -20,12 +20,16 @@ public class Cliente {
 
     //método imprime contatos
     void imprimirContatos(){
+        if(contatos != null){
         System.out.println(contatos);
+        }
     }
 
     //método imprime endereços
     void imprimirEnderecos(){
-        System.out.println(enderecos);
+        if (contatos != null) {
+            System.out.println(enderecos);
+        }
     }
 
     //método imprime cliente
