@@ -1,0 +1,31 @@
+--Aula 3
+--Exercício #1
+
+--Atualizar o logradouro e o complemento dos endereços com id 2 e 3;
+UPDATE VEMSER_CASSIA.ENDERECO
+SET    LOGRADOURO = 'RUA DOM PEDRO II', COMPLEMENTO = 'APTO 202'
+WHERE  ID_ENDERECO = 2 AND ID_ENDERECO = 3;
+
+--Atualizar o número do endereço onde id é 4 para 999999;
+UPDATE VEMSER_CASSIA.ENDERECO 
+SET	   NUMERO = 999999
+WHERE  ID_ENDERECO = 4;
+
+--Remover o último registro da tabela endereço (utilizando a função max);
+SELECT MAX(ID_ENDERECO) FROM VEMSER_CASSIA.ENDERECO
+
+DELETE
+FROM   VEMSER_CASSIA.ENDERECO
+WHERE  ID_ENDERECO = (SELECT MAX(ID_ENDERECO) FROM VEMSER_CASSIA.ENDERECO)
+
+--Remover o endereço onde o número = 999999;
+SELECT *
+FROM   VEMSER_CASSIA.ENDERECO e 
+WHERE  NUMERO = 999999;
+
+DELETE FROM   VEMSER_CASSIA.ENDERECO
+WHERE         NUMERO = 999999;
+
+--Remover 2 registros da tabela endereço;
+DELETE FROM   VEMSER_CASSIA.ENDERECO
+WHERE         ID_ENDERECO = 18 AND ID_ENDERECO = 28;
