@@ -1,32 +1,46 @@
 package br.com.dbc.vemser.pessoaapi.repository;
 
 import br.com.dbc.vemser.pessoaapi.entity.Contato;
+import br.com.dbc.vemser.pessoaapi.entity.Pessoa;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class ContatoRepository {
 
     private static List<Contato> listaContatos = new ArrayList<>();
 
+    private AtomicInteger COUNTER = new AtomicInteger();
+    private PessoaRepository pessoaRepository;
     public ContatoRepository(){
-        listaContatos.add(new Contato(1, 1, "(51) 99534714", "Celular"));
-        listaContatos.add(new Contato(2, 1, "(51) 33305067", "Residencial"));
-        listaContatos.add(new Contato(3, 2, "(51) 99588541", "Celular"));
-        listaContatos.add(new Contato(4, 2, "(51) 30916789", "Residencial"));
-        listaContatos.add(new Contato(5, 3, "(51) 33369796", "Comercial"));
-        listaContatos.add(new Contato(6, 3, "(51) 32333144", "Residencial"));
-        listaContatos.add(new Contato(7, 4, "(51) 99556874", "Celular"));
-        listaContatos.add(new Contato(8, 4, "(51) 99588744", "Celular"));
-        listaContatos.add(new Contato(9, 5, "(51) 91247714", "Celular"));
-        listaContatos.add(new Contato(10, 5, "(51) 30918865", "Residencial"));
+        pessoaRepository = new PessoaRepository();
+        listaContatos.add(new Contato(COUNTER.incrementAndGet(), 1, "(51) 99534714", "Celular"));
+        listaContatos.add(new Contato(COUNTER.incrementAndGet(), 1, "(51) 33305067", "Residencial"));
+        listaContatos.add(new Contato(COUNTER.incrementAndGet(), 2, "(51) 99588541", "Celular"));
+        listaContatos.add(new Contato(COUNTER.incrementAndGet(), 2, "(51) 30916789", "Residencial"));
+        listaContatos.add(new Contato(COUNTER.incrementAndGet(), 3, "(51) 33369796", "Comercial"));
+        listaContatos.add(new Contato(COUNTER.incrementAndGet(), 3, "(51) 32333144", "Residencial"));
+        listaContatos.add(new Contato(COUNTER.incrementAndGet(), 4, "(51) 99556874", "Celular"));
+        listaContatos.add(new Contato(COUNTER.incrementAndGet(), 4, "(51) 99588744", "Celular"));
+        listaContatos.add(new Contato(COUNTER.incrementAndGet(), 5, "(51) 91247714", "Celular"));
+        listaContatos.add(new Contato(COUNTER.incrementAndGet(), 5, "(51) 30918865", "Residencial"));
     }
 
-    public Contato create(Contato contato){
-        contato.getIdPessoa();
-        listaContatos.add(contato);
-        return contato;
+    public Contato create(Integer id, Contato novoContato) throws Exception {
+        novoContato.setIdContato(COUNTER.incrementAndGet());
+        Pessoa pessoaRecuperada = pessoaRepository.list().stream()
+                .filter( pessoa -> pessoa.getIdPessoa().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Pessoa não encontrada"));
+        novoContato.setIdPessoa(pessoaRecuperada.getIdPessoa());
+        listaContatos.add(novoContato);
+        return novoContato;
+//        Contato testeContato = listaContatos.stream()
+//                .filter(contato -> contato.getIdPessoa().equals(id)))
+//                listaContatos.add(novoContato);
+//        return novoContato;
     }
 
     public List<Contato> list() {return listaContatos;}
