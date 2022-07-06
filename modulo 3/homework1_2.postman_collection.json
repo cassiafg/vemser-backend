@@ -10,7 +10,7 @@
 			"name": "pessoa",
 			"item": [
 				{
-					"name": "GET /pessoa",
+					"name": "pessoa",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -30,7 +30,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT /pessoa",
+					"name": "pessoa",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -60,7 +60,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /pessoa",
+					"name": "pessoa",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -81,7 +81,7 @@
 					"response": []
 				},
 				{
-					"name": "POST /pessoa",
+					"name": "pessoa",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -115,7 +115,7 @@
 			"name": "contato",
 			"item": [
 				{
-					"name": "GET /contato",
+					"name": "contato",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -136,7 +136,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /contato{idPessoa}",
+					"name": "contato{idPessoa}",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -157,7 +157,7 @@
 					"response": []
 				},
 				{
-					"name": "POST /contato{idPessoa}",
+					"name": "contato{idPessoa}",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -187,7 +187,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT /contato{idContato}",
+					"name": "contato{idContato}",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -217,7 +217,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /contato{idContato}",
+					"name": "contato{idContato}",
 					"request": {
 						"method": "DELETE",
 						"header": [],

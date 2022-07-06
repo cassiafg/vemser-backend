@@ -10,7 +10,7 @@
 			"name": "/comments",
 			"item": [
 				{
-					"name": "GET /comments",
+					"name": "comments",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -30,7 +30,7 @@
 					"response": []
 				},
 				{
-					"name": "POST /comments",
+					"name": "comments",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -59,7 +59,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT /comments",
+					"name": "comments",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -89,7 +89,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /comments",
+					"name": "comments",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -112,10 +112,10 @@
 			]
 		},
 		{
-			"name": "/albuns",
+			"name": "/albums",
 			"item": [
 				{
-					"name": "GET /albums",
+					"name": "albums",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -136,7 +136,7 @@
 					"response": []
 				},
 				{
-					"name": "POST /albums",
+					"name": "albums",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -166,7 +166,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT /albums",
+					"name": "albums",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -196,7 +196,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /albuns",
+					"name": "albums",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -222,15 +222,27 @@
 			"name": "/photos",
 			"item": [
 				{
-					"name": "GET /photos",
+					"name": "photos",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/photos",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"photos"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "POST /photos",
+					"name": "photos",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -259,7 +271,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT /photos",
+					"name": "photos",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -289,7 +301,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /photos",
+					"name": "photos",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -315,7 +327,7 @@
 			"name": "/todos",
 			"item": [
 				{
-					"name": "GET /todos",
+					"name": "todos",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -335,7 +347,7 @@
 					"response": []
 				},
 				{
-					"name": "POST /todos",
+					"name": "todos",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -364,7 +376,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT /todos",
+					"name": "todos",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -394,7 +406,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /todos",
+					"name": "todos",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -420,7 +432,7 @@
 			"name": "/users",
 			"item": [
 				{
-					"name": "GET /users",
+					"name": "users",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -440,7 +452,7 @@
 					"response": []
 				},
 				{
-					"name": "POST /users",
+					"name": "users",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -469,15 +481,37 @@
 					"response": []
 				},
 				{
-					"name": "PUT /users",
+					"name": "users",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Teste PUT\",\r\n  \"body\": \"Olá!\",\r\n  \"userId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/users/3",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"users",
+								"3"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "DELETE /users",
+					"name": "users",
 					"request": {
 						"method": "DELETE",
 						"header": [],
