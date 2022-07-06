@@ -23,7 +23,7 @@ public class Contato {
         this.idContato = idContato;
     }
 
-    public Integer getidPessoa() {
+    public Integer getIdPessoa() {
         return idPessoa;
     }
 

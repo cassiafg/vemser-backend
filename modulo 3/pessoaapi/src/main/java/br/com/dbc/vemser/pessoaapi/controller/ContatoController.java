@@ -27,14 +27,14 @@ public class ContatoController {
     }
 
     @PostMapping  //localhost:8080/contato
-    public Contato create (@PathVariable("idPessoa") Integer id, @RequestBody Contato contato) throws Exception{
-        return contatoService.create(id, contato);
+    public Contato create (@RequestBody Contato contato){
+        return contatoService.create(contato);
     }
 
     @PutMapping("/{idContato}") // localhost:8080/contato/4
     public Contato update(@PathVariable("idContato") Integer id,
-                          @RequestBody Contato contatoAtualizar) throws Exception {
-        return contatoService.update(id, contatoAtualizar);
+                          @RequestBody Contato contato) throws Exception {
+        return contatoService.update(id, contato);
     }
 
     @DeleteMapping("/{idContato}") // localhost:8080/contato/2

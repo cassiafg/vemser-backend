@@ -14,8 +14,8 @@ public class ContatoService {
         contatoRepository = new ContatoRepository();
     }
 
-    public Contato create (Integer id, Contato contato) throws Exception{
-        return contatoRepository.create(id, contato);
+    public Contato create (Contato contato){
+        return contatoRepository.create(contato);
     }
 
     public List<Contato> list(){
