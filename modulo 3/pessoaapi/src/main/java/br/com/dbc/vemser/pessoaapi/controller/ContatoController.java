@@ -1,7 +1,9 @@
 package br.com.dbc.vemser.pessoaapi.controller;
 
+import br.com.dbc.vemser.pessoaapi.config.PropertieReader;
 import br.com.dbc.vemser.pessoaapi.entity.Contato;
 import br.com.dbc.vemser.pessoaapi.service.ContatoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,11 +12,14 @@ import java.util.List;
 @RequestMapping("/contato") //localhost:8080/contato
 public class ContatoController {
 
+    @Autowired
+    private PropertieReader propertieReader;
+    @Autowired
     private ContatoService contatoService;
 
-    public ContatoController(){
-        contatoService = new ContatoService();
-    }
+ //   public ContatoController(){
+ //       contatoService = new ContatoService();
+ //   }
 
     @GetMapping  //localhost:8080/contato
     public List<Contato> list(){

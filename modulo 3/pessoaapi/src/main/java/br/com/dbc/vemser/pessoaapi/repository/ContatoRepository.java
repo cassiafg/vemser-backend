@@ -2,14 +2,18 @@ package br.com.dbc.vemser.pessoaapi.repository;
 
 import br.com.dbc.vemser.pessoaapi.entity.Contato;
 import br.com.dbc.vemser.pessoaapi.entity.Pessoa;
+import br.com.dbc.vemser.pessoaapi.service.ContatoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+@Repository
 public class ContatoRepository {
-
+    private ContatoService contatoService;
     private static List<Contato> listaContatos = new ArrayList<>();
 
     private AtomicInteger COUNTER = new AtomicInteger();
@@ -28,47 +32,25 @@ public class ContatoRepository {
         listaContatos.add(new Contato(COUNTER.incrementAndGet(), 5, "(51) 30918865", "Residencial"));
     }
 
-    public Contato create(Integer id, Contato novoContato) throws Exception {
-        novoContato.setIdContato(COUNTER.incrementAndGet());
-        Pessoa pessoaRecuperada = pessoaRepository.list().stream()
-                .filter( pessoa -> pessoa.getIdPessoa().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new Exception("Pessoa não encontrada"));
-        novoContato.setIdPessoa(pessoaRecuperada.getIdPessoa());
-        listaContatos.add(novoContato);
-        return novoContato;
-//        Contato testeContato = listaContatos.stream()
-//                .filter(contato -> contato.getIdPessoa().equals(id)))
-//                listaContatos.add(novoContato);
-//        return novoContato;
+    public Contato create(Contato contato) throws Exception {
+        contato.setIdContato(COUNTER.incrementAndGet());
+        listaContatos.add(contato);
+        return contato;
     }
 
     public List<Contato> list() {return listaContatos;}
 
     public Contato update(Integer id,
                          Contato contatoAtualizar) throws Exception {
-        Contato contatoRecuperado = listaContatos.stream()
-                .filter(contato -> contato.getIdContato().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new Exception("Contato não encontrado"));
-        contatoRecuperado.setIdPessoa(contatoAtualizar.getIdPessoa());
-        contatoRecuperado.setNumero(contatoAtualizar.getNumero());
-        contatoRecuperado.setDescricao(contatoAtualizar.getDescricao());
-        return contatoRecuperado;
+        return listaContatos.set(id, contatoAtualizar);
     }
 
     public void delete(Integer id) throws Exception {
-        Contato contatoRecuperado = listaContatos.stream()
-                .filter(contato -> contato.getIdContato().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new Exception("Contato não encontrado"));
-        listaContatos.remove(contatoRecuperado);
+        listaContatos.remove(id);
     }
 
     public List<Contato> listById(Integer id) {
-        return listaContatos.stream()
-                .filter(contato -> contato.getIdPessoa().equals(id))
-                .collect(Collectors.toList());
+        return listaContatos;
     }
 }
 
