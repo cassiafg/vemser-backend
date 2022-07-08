@@ -2,12 +2,16 @@ package br.com.dbc.vemser.pessoaapi.controller;
 
 import br.com.dbc.vemser.pessoaapi.config.PropertieReader;
 import br.com.dbc.vemser.pessoaapi.entity.Contato;
+import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.dbc.vemser.pessoaapi.service.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
-
+@Validated
 @RestController
 @RequestMapping("/contato") //localhost:8080/contato
 public class ContatoController {
@@ -32,14 +36,14 @@ public class ContatoController {
     }
 
     @PostMapping("/{idPessoa}") //localhost:8080/contato/1
-    public Contato create (@PathVariable("idPessoa") Integer id, @RequestBody Contato novoContato) throws Exception{
-        return contatoService.create(id, novoContato);
+    public ResponseEntity<Contato> create (@PathVariable("idPessoa") Integer id, @Valid @RequestBody Contato novoContato) throws Exception {
+        return ResponseEntity.ok(contatoService.create(id, novoContato));
     }
 
     @PutMapping("/{idContato}") // localhost:8080/contato/4
-    public Contato update(@PathVariable("idContato") Integer id,
-                          @RequestBody Contato contato) throws Exception {
-        return contatoService.update(id, contato);
+    public ResponseEntity<Contato> update(@PathVariable("idContato") Integer id,
+                          @Valid@RequestBody Contato contato) throws Exception {
+        return ResponseEntity.ok(contatoService.update(id, contato));
     }
 
     @DeleteMapping("/{idContato}") // localhost:8080/contato/2

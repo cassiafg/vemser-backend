@@ -34,7 +34,7 @@ public class ContatoService {
         Pessoa pessoaRecuperada = pessoaRepository.list().stream()
                 .filter( pessoa -> pessoa.getIdPessoa().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Pessoa não encontrada"));
+                .orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada"));
         contato.setIdPessoa(pessoaRecuperada.getIdPessoa());
         return contatoRepository.create(contato);
     }
@@ -48,7 +48,7 @@ public class ContatoService {
         Contato contatoRecuperado =contatoRepository.list().stream()
                 .filter(contato -> contato.getIdContato().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Contato não encontrado"));
+                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
         contatoRecuperado.setIdPessoa(contatoAtualizar.getIdPessoa());
         contatoRecuperado.setNumero(contatoAtualizar.getNumero());
         contatoRecuperado.setDescricao(contatoAtualizar.getDescricao());
