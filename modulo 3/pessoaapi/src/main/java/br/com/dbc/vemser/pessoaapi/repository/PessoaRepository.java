@@ -33,20 +33,4 @@ public class PessoaRepository {
     public List<Pessoa> list() {
         return listaPessoas;
     }
-
-
-
-    public void delete(Integer id) throws Exception {
-        Pessoa pessoaRecuperada = listaPessoas.stream()
-                .filter(pessoa -> pessoa.getIdPessoa().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new Exception("Pessoa não econtrada"));
-        listaPessoas.remove(pessoaRecuperada);
-    }
-
-    public List<Pessoa> listByName(String nome) {
-        return listaPessoas.stream()
-                .filter(pessoa -> pessoa.getNome().toUpperCase().contains(nome.toUpperCase()))
-                .collect(Collectors.toList());
-    }
 }

@@ -32,25 +32,12 @@ public class ContatoRepository {
         listaContatos.add(new Contato(COUNTER.incrementAndGet(), 5, "(51) 30918865", "Residencial"));
     }
 
-    public Contato create(Contato contato) throws Exception {
+    public Contato create(Contato contato){
         contato.setIdContato(COUNTER.incrementAndGet());
         listaContatos.add(contato);
         return contato;
     }
 
     public List<Contato> list() {return listaContatos;}
-
-    public Contato update(Integer id,
-                         Contato contatoAtualizar) throws Exception {
-        return listaContatos.set(id, contatoAtualizar);
-    }
-
-    public void delete(Integer id) throws Exception {
-        listaContatos.remove(id);
-    }
-
-    public List<Contato> listById(Integer id) {
-        return listaContatos;
-    }
 }
 

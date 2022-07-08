@@ -26,26 +26,11 @@ public EnderecoRepository(){
     listaEnderecos.add(new Endereco(COUNTER.incrementAndGet(),5, "Rua das camélias", 1493, null, "94320-040", "Canoas", "RS", "Brasil"));
 }
 
-    public Endereco create(Endereco endereco) throws Exception {
+    public Endereco create(Endereco endereco){
         endereco.setIdEndereco(COUNTER.incrementAndGet());
         listaEnderecos.add(endereco);
         return endereco;
     }
 
     public List<Endereco> list() {return listaEnderecos;}
-
-    public List<Endereco> listById(Integer id) {
-        return listaEnderecos;
-    }
-
-    public List<Endereco> listByIdPessoa(Integer idPessoa) {
-        return listaEnderecos;
-    }
-
-    public Endereco update(Integer id, Endereco enderecoAtualizar) throws Exception {
-        return listaEnderecos.set(id, enderecoAtualizar);
-    }
-    public void delete(Integer id) throws Exception {
-        listaEnderecos.remove(id);
-    }
 }
