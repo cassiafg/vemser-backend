@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PessoaService {
@@ -34,14 +35,27 @@ public class PessoaService {
 
     public Pessoa update(Integer id,
                          Pessoa pessoaAtualizar) throws Exception {
-        return pessoaRepository.update(id, pessoaAtualizar);
+        Pessoa pessoaRecuperada = pessoaRepository.list().stream()
+                .filter(pessoa -> pessoa.getIdPessoa().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Pessoa não econtrada"));
+        pessoaRecuperada.setCpf(pessoaAtualizar.getCpf());
+        pessoaRecuperada.setNome(pessoaAtualizar.getNome());
+        pessoaRecuperada.setDataNascimento(pessoaAtualizar.getDataNascimento());
+        return pessoaRecuperada;
     }
 
     public void delete(Integer id) throws Exception {
-        pessoaRepository.delete(id);
+        Pessoa pessoaRecuperada = pessoaRepository.list().stream()
+                .filter(pessoa -> pessoa.getIdPessoa().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Pessoa não econtrada"));
+        pessoaRepository.list().remove(pessoaRecuperada);
     }
 
     public List<Pessoa> listByName(String nome) {
-        return pessoaRepository.listByName(nome);
+        return pessoaRepository.list().stream()
+                .filter(pessoa -> pessoa.getNome().toUpperCase().contains(nome.toUpperCase()))
+                .collect(Collectors.toList());
     }
 }
