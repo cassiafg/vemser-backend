@@ -3,6 +3,7 @@ package br.com.dbc.vemser.pessoaapi.service;
 import br.com.dbc.vemser.pessoaapi.entity.Contato;
 import br.com.dbc.vemser.pessoaapi.entity.Endereco;
 import br.com.dbc.vemser.pessoaapi.entity.Pessoa;
+import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.dbc.vemser.pessoaapi.repository.EnderecoRepository;
 import br.com.dbc.vemser.pessoaapi.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class EnderecoService {
         Pessoa pessoaRecuperada = pessoaRepository.list().stream()
                 .filter( pessoa -> pessoa.getIdPessoa().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Pessoa não encontrada"));
+                .orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada"));
         endereco.setIdPessoa(pessoaRecuperada.getIdPessoa());
         return enderecoRepository.create(endereco);
     }
@@ -52,7 +53,7 @@ public class EnderecoService {
         Endereco enderecoRecuperado = enderecoRepository.list().stream()
                 .filter(endereco -> endereco.getIdEndereco().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Endereço não encontrado"));
+                .orElseThrow(() -> new RegraDeNegocioException("Endereço não encontrado"));
         enderecoRecuperado.setIdPessoa(enderecoAtualizar.getIdPessoa());
         enderecoRecuperado.setLogradouro(enderecoAtualizar.getLogradouro());
         enderecoRecuperado.setNumero(enderecoAtualizar.getNumero());
@@ -68,7 +69,7 @@ public class EnderecoService {
         Endereco endereco = enderecoRepository.list().stream()
                 .filter(x -> x.getIdEndereco() == id.longValue())
                 .findFirst()
-                .orElseThrow(() -> new Exception("Contato não econtrado"));
+                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
         enderecoRepository.list().remove(endereco);
     }
 
