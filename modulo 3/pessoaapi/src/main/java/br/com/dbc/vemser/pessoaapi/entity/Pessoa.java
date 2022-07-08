@@ -1,25 +1,18 @@
 package br.com.dbc.vemser.pessoaapi.entity;
 
-import org.hibernate.validator.constraints.br.CPF;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 public class Pessoa {
-
     @NotNull
     private Integer idPessoa;
-    @NotBlank
+    @NotEmpty(message = "O campo nome não pode ser vazio nem nulo")
     private String nome;
-    @NotBlank
+    @NotNull(message = "O campo data de nascimento não pode ser vazio")
     @Past
     private LocalDate dataNascimento;
-    @NotNull
-    @NotBlank
-    @Size(min = 11, max = 11)
+    @NotEmpty(message = "O campo cpf não pode ser nulo nem vazio")
+    @Size(min = 11, max = 11, message = "O campo cpf deve conter 11 caracteres")
     private String cpf;
 
     public Pessoa() {
