@@ -2,6 +2,7 @@ package br.com.dbc.vemser.pessoaapi.service;
 
 import br.com.dbc.vemser.pessoaapi.entity.Contato;
 import br.com.dbc.vemser.pessoaapi.entity.Pessoa;
+import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.dbc.vemser.pessoaapi.repository.ContatoRepository;
 import br.com.dbc.vemser.pessoaapi.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class ContatoService {
         Contato contato = contatoRepository.list().stream()
                 .filter(x -> x.getIdContato() == id.longValue())
                 .findFirst()
-                .orElseThrow(() -> new Exception("Contato não econtrado"));
+                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
        contatoRepository.list().remove(contato);
     }
     public List<Contato> listById(Integer id) {
