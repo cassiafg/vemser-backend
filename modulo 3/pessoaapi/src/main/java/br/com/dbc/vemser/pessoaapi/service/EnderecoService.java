@@ -24,10 +24,7 @@ public class EnderecoService {
     private PessoaService pessoaService;
 
     public Endereco create (Integer id, Endereco endereco) throws Exception{
-        Pessoa pessoaRecuperada = pessoaRepository.list().stream()
-                .filter( pessoa -> pessoa.getIdPessoa().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada"));
+        Pessoa pessoaRecuperada = pessoaService.findById(id);
         endereco.setIdPessoa(pessoaRecuperada.getIdPessoa());
         return enderecoRepository.create(endereco);
     }

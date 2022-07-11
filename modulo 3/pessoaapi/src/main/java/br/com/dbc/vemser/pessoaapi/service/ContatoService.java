@@ -24,17 +24,9 @@ public class ContatoService {
     private PessoaService pessoaService;
 
     private ContatoService contatoService;
-    private AtomicInteger COUNTER = new AtomicInteger();
-    //   public ContatoService(){
-    //       contatoRepository = new ContatoRepository();
-    //   }
 
     public Contato create (Integer id, Contato contato) throws Exception{
-        contato.setIdContato(COUNTER.incrementAndGet());
-        Pessoa pessoaRecuperada = pessoaRepository.list().stream()
-                .filter( pessoa -> pessoa.getIdPessoa().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada"));
+        Pessoa pessoaRecuperada = pessoaService.findById(id);
         contato.setIdPessoa(pessoaRecuperada.getIdPessoa());
         return contatoRepository.create(contato);
     }
