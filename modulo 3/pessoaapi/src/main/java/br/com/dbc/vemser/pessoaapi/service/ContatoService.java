@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,13 +42,10 @@ public class ContatoService {
 
     public List<ContatoDTO> list(){
         log.info("Listando contatos...");
-        List<ContatoDTO> listaContatosDTO = new ArrayList<>();
-        List<Contato> listaContatosE = contatoRepository.list();
-        for(Contato contato : listaContatosE){
-            listaContatosDTO.add(objectMapper.convertValue(contato, ContatoDTO.class));
-        }
         log.info("Contatos listados com sucesso!");
-        return listaContatosDTO;
+        return contatoRepository.list().stream()
+                .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
+                .collect(Collectors.toList());
     }
 
     public ContatoDTO update(Integer id,

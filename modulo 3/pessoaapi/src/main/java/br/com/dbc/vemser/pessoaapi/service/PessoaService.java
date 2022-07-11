@@ -5,13 +5,11 @@ import br.com.dbc.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.dbc.vemser.pessoaapi.entity.Pessoa;
 import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.dbc.vemser.pessoaapi.repository.PessoaRepository;
-import ch.qos.logback.core.util.COWArrayList;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,12 +36,11 @@ public class PessoaService {
     }
 
     public List<PessoaDTO> list(){
-        List<PessoaDTO> listaPessoasDTO = new ArrayList<>();
-        List<Pessoa> listaPessoasE = pessoaRepository.list();
-        for(Pessoa pessoa : listaPessoasE){
-            listaPessoasDTO.add(objectMapper.convertValue(pessoa, PessoaDTO.class));
-        }
-        return listaPessoasDTO;
+        log.info("Listando pessoas...");
+        log.info("Pesssoas listadas com sucesso!");
+        return pessoaRepository.list().stream()
+                .map(pessoa -> objectMapper.convertValue(pessoa, PessoaDTO.class))
+                .collect(Collectors.toList());
     }
 
     public PessoaDTO update(Integer id,

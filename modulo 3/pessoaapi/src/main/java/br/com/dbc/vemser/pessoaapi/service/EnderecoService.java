@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 @Service
@@ -40,13 +39,10 @@ public class EnderecoService {
 
     public List<EnderecoDTO> list(){
         log.info("Listando endereços...");
-        List<EnderecoDTO> listaEnderecosDTO = new ArrayList<>();
-        List<Endereco> listaEnderecosE = enderecoRepository.list();
-        for (Endereco endereco : listaEnderecosE){
-            listaEnderecosDTO.add(objectMapper.convertValue(endereco, EnderecoDTO.class));
-        }
         log.info("Endereços listados com sucesso!");
-        return listaEnderecosDTO;
+        return enderecoRepository.list().stream()
+                .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
+                .collect(Collectors.toList());
     }
 
     public List<EnderecoDTO> listById(Integer id) {
