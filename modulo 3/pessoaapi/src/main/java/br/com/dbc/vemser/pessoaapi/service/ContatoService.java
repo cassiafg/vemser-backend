@@ -58,9 +58,8 @@ public class ContatoService {
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
         Contato contatoEntity = objectMapper.convertValue(contatoAtualizar, Contato.class);
-        Contato contatoAtualizado = contatoRecuperado;
         //--------------------------------------
-        ContatoDTO contatoDTO = new ContatoDTO();
+        ContatoDTO contatoDTO;
         contatoDTO = objectMapper.convertValue(contatoRecuperado, ContatoDTO.class);
         contatoDTO.setIdPessoa(contatoAtualizar.getIdPessoa());
         contatoDTO.setNumero(contatoAtualizar.getNumero());
