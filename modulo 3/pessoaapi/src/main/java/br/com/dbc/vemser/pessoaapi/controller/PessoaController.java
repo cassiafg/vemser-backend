@@ -1,8 +1,11 @@
 package br.com.dbc.vemser.pessoaapi.controller;
 
+import br.com.dbc.vemser.pessoaapi.dto.PessoaCreateDTO;
+import br.com.dbc.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.dbc.vemser.pessoaapi.entity.Pessoa;
 import br.com.dbc.vemser.pessoaapi.config.PropertieReader;
 import br.com.dbc.vemser.pessoaapi.service.PessoaService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -14,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/pessoa") // localhost:8080/pessoa
 @Validated
+@Slf4j
 public class PessoaController {
     @Autowired
     private PropertieReader propertieReader;
@@ -27,7 +31,7 @@ public class PessoaController {
     }
 
     @PostMapping // localhost:8080/pessoa
-    public ResponseEntity<Pessoa> create(@Valid @RequestBody Pessoa pessoa) {
+    public ResponseEntity<PessoaDTO> create(@Valid @RequestBody PessoaCreateDTO pessoa) {
         return ResponseEntity.ok(pessoaService.create(pessoa));
     }
 
@@ -47,8 +51,8 @@ public class PessoaController {
     }
 
     @PutMapping("/{idPessoa}") // localhost:8080/pessoa/1000
-    public ResponseEntity<Pessoa> update(@PathVariable("idPessoa") Integer id,
-                        @RequestBody @Valid Pessoa pessoaAtualizar) throws Exception {
+    public ResponseEntity<PessoaDTO> update(@PathVariable("idPessoa") Integer id,
+                        @RequestBody @Valid PessoaCreateDTO pessoaAtualizar) throws Exception {
         return ResponseEntity.ok(pessoaService.update(id, pessoaAtualizar));
     }
 

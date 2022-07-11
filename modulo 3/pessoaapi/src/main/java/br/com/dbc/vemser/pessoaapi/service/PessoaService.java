@@ -23,6 +23,7 @@ public class PessoaService {
     @Autowired
     private ObjectMapper objectMapper;
 
+
     public PessoaDTO create(PessoaCreateDTO pessoa){
         log.info("Criando a pessoa...");
         Pessoa pessoaEntity = objectMapper.convertValue(pessoa, Pessoa.class);
@@ -38,13 +39,19 @@ public class PessoaService {
         return pessoaRepository.list();
     }
 
-    public Pessoa update(Integer id,
-                         Pessoa pessoaAtualizar) throws Exception {
-        Pessoa p = findById(id);
-        p.setCpf(pessoaAtualizar.getCpf());
-        p.setNome(pessoaAtualizar.getNome());
-        p.setDataNascimento(pessoaAtualizar.getDataNascimento());
-        return p;
+    public PessoaDTO update(Integer id,
+                         PessoaCreateDTO pessoaAtualizar) throws Exception {
+        log.info("Buscando a pessoa...");
+        Pessoa pessoaEntity = objectMapper.convertValue(pessoaAtualizar, Pessoa.class);
+        Pessoa pessoaAtualizada = findById(id);
+        //-----------------------
+        PessoaDTO pessoaDTO = new PessoaDTO();
+        pessoaDTO = objectMapper.convertValue(pessoaAtualizada, PessoaDTO.class);
+        log.warn(("Pessoa"+pessoaDTO.getNome()+"criada"));
+        pessoaDTO.setCpf(pessoaAtualizar.getCpf());
+        pessoaDTO.setNome(pessoaAtualizar.getNome());
+        pessoaDTO.setDataNascimento(pessoaAtualizar.getDataNascimento());
+        return pessoaDTO;
     }
 
     public void delete(Integer id) throws Exception {
