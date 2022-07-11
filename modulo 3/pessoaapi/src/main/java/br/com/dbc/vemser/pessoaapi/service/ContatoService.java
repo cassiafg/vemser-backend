@@ -37,47 +37,52 @@ public class ContatoService {
         Contato contatoCriado = contatoRepository.create(contatoEntity);
         //----------------------------------------------------------------
         ContatoDTO contatoDTO = objectMapper.convertValue(contatoCriado, ContatoDTO.class);
-        log.warn("Contato criado");
+        log.warn("Contato criado com sucesso!");
         return contatoDTO;
     }
 
     public List<ContatoDTO> list(){
+        log.info("Listando contatos...");
         List<ContatoDTO> listaContatosDTO = new ArrayList<>();
         List<Contato> listaContatosE = contatoRepository.list();
         for(Contato contato : listaContatosE){
             listaContatosDTO.add(objectMapper.convertValue(contato, ContatoDTO.class));
         }
+        log.info("Contatos listados com sucesso!");
         return listaContatosDTO;
     }
 
     public ContatoDTO update(Integer id,
                          ContatoCreateDTO contatoAtualizar) throws Exception {
-        log.info("Buscando o contato a atualizar...");
-        Contato contatoRecuperado =contatoRepository.list().stream()
-                .filter(contato -> contato.getIdContato().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
         Contato contatoEntity = objectMapper.convertValue(contatoAtualizar, Contato.class);
         //--------------------------------------
+        log.info("Buscando o contato a atualizar...");
         ContatoDTO contatoDTO;
-        contatoDTO = objectMapper.convertValue(contatoRecuperado, ContatoDTO.class);
+        contatoDTO = objectMapper.convertValue(findContatoById(id), ContatoDTO.class);
         contatoDTO.setIdPessoa(contatoAtualizar.getIdPessoa());
         contatoDTO.setNumero(contatoAtualizar.getNumero());
         contatoDTO.setDescricao(contatoAtualizar.getDescricao());
-        log.warn(("Contato atualizado"));
+        log.warn(("Contato atualizado com sucesso!"));
         return contatoDTO;
     }
 
     public void delete(Integer id) throws Exception {
-        Contato contato = contatoRepository.list().stream()
-                .filter(x -> x.getIdContato() == id.longValue())
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
-       contatoRepository.list().remove(contato);
+        contatoRepository.list().remove(findContatoById(id));
+        log.info("Contato deletado com sucesso!");
     }
     public List<ContatoDTO> listById(Integer id) {
         return list().stream()
                 .filter(x -> x.getIdPessoa().equals(id))
                 .collect(Collectors.toList());
+    }
+
+    public Contato findContatoById(Integer id) throws Exception{
+        log.info("Buscando contato...");
+        Contato contatoRecuperado =contatoRepository.list().stream()
+                .filter(contato -> contato.getIdContato().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
+        log.info("Contato encontrado!");
+        return contatoRecuperado;
     }
 }
