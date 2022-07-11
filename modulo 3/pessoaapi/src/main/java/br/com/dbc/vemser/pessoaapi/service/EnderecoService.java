@@ -25,35 +25,39 @@ public class EnderecoService {
     private ObjectMapper objectMapper;
 
     public EnderecoDTO create (Integer id, EnderecoCreateDTO endereco) throws Exception{
-        log.info("Buscando pessoa pelo id");
+        log.info("Buscando pessoa pelo id...");
         Pessoa pessoaRecuperada = pessoaService.findById(id);
-        log.info("Pessoa encontrada");
+        log.info("Pessoa encontrada!");
         endereco.setIdPessoa(pessoaRecuperada.getIdPessoa());
-        log.info("Criando endereço para a pessoa");
+        log.info("Criando endereço para a pessoa...");
         Endereco enderecoEntity = objectMapper.convertValue(endereco, Endereco.class);
         Endereco novoEndereco = enderecoRepository.create(enderecoEntity);
         //--------------------------------------------------------------
         EnderecoDTO enderecoDTO = objectMapper.convertValue(novoEndereco, EnderecoDTO.class);
-        log.info("Endereço criado");
+        log.info("Endereço criado com sucesso!");
         return enderecoDTO;
     }
 
     public List<EnderecoDTO> list(){
+        log.info("Listando endereços...");
         List<EnderecoDTO> listaEnderecosDTO = new ArrayList<>();
         List<Endereco> listaEnderecosE = enderecoRepository.list();
         for (Endereco endereco : listaEnderecosE){
             listaEnderecosDTO.add(objectMapper.convertValue(endereco, EnderecoDTO.class));
         }
+        log.info("Endereços listados com sucesso!");
         return listaEnderecosDTO;
     }
 
     public List<EnderecoDTO> listById(Integer id) {
+        log.info("Listando endereços por id...");
         return list().stream()
                 .filter(endereco -> endereco.getIdEndereco().equals(id))
                 .collect(Collectors.toList());
     }
 
     public List<EnderecoDTO> listByIdPessoa(Integer idPessoa) {
+        log.info("Listando endereços por idPessoa...");
         return list().stream()
                 .filter(x -> x.getIdPessoa().equals(idPessoa))
                 .collect(Collectors.toList());
@@ -61,15 +65,10 @@ public class EnderecoService {
 
     public EnderecoDTO update(Integer id,
                           EnderecoCreateDTO endereco) throws Exception {
-        log.info("Buscando o endereço a atualizar");
-        Endereco enderecoRecuperado = enderecoRepository.list().stream()
-                .filter(x -> x.getIdEndereco().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Endereço não encontrado"));
         Endereco enderecoEntity = objectMapper.convertValue(endereco, Endereco.class);
         //-------------------------------------------------------------------------
         EnderecoDTO enderecoDTO;
-        enderecoDTO = objectMapper.convertValue(enderecoRecuperado, EnderecoDTO.class);
+        enderecoDTO = objectMapper.convertValue(findEnderecoById(id), EnderecoDTO.class);
         enderecoDTO.setIdPessoa(endereco.getIdPessoa());
         enderecoDTO.setLogradouro(endereco.getLogradouro());
         enderecoDTO.setNumero(endereco.getNumero());
@@ -78,17 +77,23 @@ public class EnderecoService {
         enderecoDTO.setCidade(endereco.getCidade());
         enderecoDTO.setEstado(endereco.getEstado());
         enderecoDTO.setPais(endereco.getPais());
-        log.warn("Endereço atualizado");
+        log.warn("Endereço atualizado com sucesso!");
         return enderecoDTO;
     }
 
     public void delete(Integer id) throws Exception {
-        Endereco endereco = enderecoRepository.list().stream()
+        enderecoRepository.list().remove(findEnderecoById(id));
+        log.info("Endereço deletado com sucesso!");
+    }
+
+    public Endereco findEnderecoById(Integer id) throws Exception{
+        log.info("Buscando endereço...");
+        Endereco enderecoRecuperado = enderecoRepository.list().stream()
                 .filter(x -> x.getIdEndereco() == id.longValue())
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
-        enderecoRepository.list().remove(endereco);
+        log.info("Endereço encontrado!");
+        return enderecoRecuperado;
     }
-
 
 }
