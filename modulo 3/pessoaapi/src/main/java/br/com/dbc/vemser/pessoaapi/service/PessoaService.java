@@ -5,11 +5,13 @@ import br.com.dbc.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.dbc.vemser.pessoaapi.entity.Pessoa;
 import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.dbc.vemser.pessoaapi.repository.PessoaRepository;
+import ch.qos.logback.core.util.COWArrayList;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,12 +33,17 @@ public class PessoaService {
         //-----------------------
         PessoaDTO pessoaDTO = new PessoaDTO();
         pessoaDTO = objectMapper.convertValue(pessoaCriada, PessoaDTO.class);
-        log.warn(("Pessoa"+pessoaDTO.getNome()+"criada"));
+        log.warn(("Pessoa "+pessoaDTO.getNome()+" criada"));
         return pessoaDTO;
     }
 
-    public List<Pessoa> list(){
-        return pessoaRepository.list();
+    public List<PessoaDTO> list(){
+        List<PessoaDTO> listaPessoasDTO = new ArrayList<>();
+        List<Pessoa> listaPessoasE = pessoaRepository.list();
+        for(Pessoa pessoa : listaPessoasE){
+            listaPessoasDTO.add(objectMapper.convertValue(pessoa, PessoaDTO.class));
+        }
+        return listaPessoasDTO;
     }
 
     public PessoaDTO update(Integer id,
@@ -47,7 +54,7 @@ public class PessoaService {
         //-----------------------
         PessoaDTO pessoaDTO = new PessoaDTO();
         pessoaDTO = objectMapper.convertValue(pessoaAtualizada, PessoaDTO.class);
-        log.warn(("Pessoa"+pessoaDTO.getNome()+"criada"));
+        log.warn(("Pessoa "+pessoaDTO.getNome()+" alterada"));
         pessoaDTO.setCpf(pessoaAtualizar.getCpf());
         pessoaDTO.setNome(pessoaAtualizar.getNome());
         pessoaDTO.setDataNascimento(pessoaAtualizar.getDataNascimento());
