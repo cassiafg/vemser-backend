@@ -1,5 +1,6 @@
 package br.com.dbc.vemser.pessoaapi.service;
 
+import br.com.dbc.vemser.pessoaapi.dto.PessoaDTO;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
@@ -58,6 +59,18 @@ public class EmailService {
         emailSender.send(message);
     }
 
+    public void sendEmailCriarPessoa(PessoaDTO pessoaDTO){
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(from);
+        message.setText(pessoaDTO.getEmail());
+        message.setSubject("Bem vindo(a)!");
+        message.setText("Olá " +pessoaDTO.getNome()+ ", \n" +
+                "Estamos felizes em ter você em nosso sistema :) \n"+
+                "Seu cadastro foi realizado com sucesso, seu identificador é " +pessoaDTO.getIdPessoa()+"\n" +
+                "Qualquer dúvida é só contatar o suporte pelo e-mail cassia.guimaraes@dbccompany.com.br \n"+
+                "Att, Sistema");
+        emailSender.send(message);
+    }
     public void sendEmail() {
         MimeMessage mimeMessage = emailSender.createMimeMessage();
         try {
@@ -66,10 +79,10 @@ public class EmailService {
             mimeMessageHelper.setFrom(from);
             mimeMessageHelper.setTo(from);
             mimeMessageHelper.setSubject("Assunto3");
-            mimeMessageHelper.setText("Olá "+pessoa.getNome()+", Estamos felizes em ter você em nosso sistema :) Seu cadastro foi realizado com sucesso, seu identificador é " +pessoa.getId()+ ". Qualquer dúvida é só contatar o suporte pelo e-mail");
+            mimeMessageHelper.setText(getContentFromTemplate(), true);
 
             emailSender.send(mimeMessageHelper.getMimeMessage());
-        } catch (MessagingException e) {
+        } catch  (MessagingException | IOException | TemplateException e) {
             e.printStackTrace();
         }
     }
