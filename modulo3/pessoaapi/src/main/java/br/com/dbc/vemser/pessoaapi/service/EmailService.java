@@ -1,6 +1,7 @@
 package br.com.dbc.vemser.pessoaapi.service;
 
 import br.com.dbc.vemser.pessoaapi.dto.PessoaDTO;
+import br.com.dbc.vemser.pessoaapi.entity.Pessoa;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
@@ -80,6 +81,18 @@ public class EmailService {
         message.setText("Olá "+pessoaDTO.getNome()+ ", \n"+
                 "Seus dados foram atualizados em nosso sistema :) \n"+
                 "Qualquer dúvida é só contatar nosso suporte pelo e-mail suporte@sistema.com.br \n"+
+                "Att, \n Sistema.");
+        emailSender.send(message);
+    }
+
+    public void sendEmailExcluirPessoa(Pessoa pessoa){
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(from);
+        message.setTo(pessoa.getEmail());
+        message.setSubject("Cadastro excluído");
+        message.setText("Olá "+pessoa.getNome()+ ", \n"+
+                "Você perdeu o acesso ao nosso sistema. \n"+
+                "Qualquer dúvida é só contatar o suporte pelo e-mail suporte@sistema.com.br \n"+
                 "Att, \n Sistema.");
         emailSender.send(message);
     }

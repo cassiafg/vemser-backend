@@ -64,6 +64,7 @@ public class PessoaService {
 
     public void delete(Integer id) throws Exception {
         pessoaRepository.list().remove(findById(id));
+        emailService.sendEmailExcluirPessoa(findById(id));
     }
 
     public List<Pessoa> listByName(String nome) {
