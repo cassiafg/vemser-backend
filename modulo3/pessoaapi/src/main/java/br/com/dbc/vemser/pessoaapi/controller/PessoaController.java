@@ -4,9 +4,12 @@ import br.com.dbc.vemser.pessoaapi.dto.PessoaCreateDTO;
 import br.com.dbc.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.dbc.vemser.pessoaapi.entity.Pessoa;
 import br.com.dbc.vemser.pessoaapi.config.PropertieReader;
+import br.com.dbc.vemser.pessoaapi.service.EmailService;
 import br.com.dbc.vemser.pessoaapi.service.PessoaService;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +27,12 @@ public class PessoaController {
 
     @Autowired
     private PessoaService pessoaService;
+
+    @Autowired
+    private EmailService emailService;
+
+    @Value("${spring.application.name}")
+    private String app;
 
     @GetMapping("/hello") // localhost:8080/pessoa/hello
     public String hello() {
@@ -49,6 +58,14 @@ public class PessoaController {
     public List<Pessoa> listByName(@RequestParam("nome") String nome) {
         return pessoaService.listByName(nome);
     }
+
+//    @SneakyThrows
+//    @GetMapping("/email")
+//    public String email(){
+//    //    emailService.sendSimpleMessage();
+//        emailService.sendWithAttachment();
+//        return "Enviando e-mail..."+app+"!";
+//    }
 
     @PutMapping("/{idPessoa}") // localhost:8080/pessoa/1000
     public ResponseEntity<PessoaDTO> update(@PathVariable("idPessoa") Integer id,

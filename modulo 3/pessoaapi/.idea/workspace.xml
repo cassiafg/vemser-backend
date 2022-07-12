@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2b822dee-b8b8-4153-9f52-fabaa339c6b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/aula2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/out/production/aula2/Ex1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/out/production/aula2/Ex2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/out/production/aula2/Ex3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/out/production/aula2/Ex4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/src/Ex1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/src/Ex2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/src/Ex3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Aula2/src/Ex4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/Lista1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Aula2_ex1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Exercicio1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Exercicio10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Exercicio2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Exercicio3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Exercicio4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Exercicio5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Exercicio6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Exercicio7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Exercicio8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/out/production/Lista1/Exercicio9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Aula2_ex1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Exercicio1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Exercicio10.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Exercicio2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Exercicio3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Exercicio4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Exercicio5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Exercicio6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Exercicio7.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Exercicio8.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista1/src/Exercicio9.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/Lista2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/out/production/Lista2/Exercicio1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/out/production/Lista2/Exercicio2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/out/production/Lista2/Exercicio3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/out/production/Lista2/Exercicio4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/out/production/Lista2/Exercicio5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/out/production/Lista2/Exercicio6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/out/production/Lista2/Exercicio7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/out/production/Lista2/Exercicio8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/src/Exercicio1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/src/Exercicio2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/src/Exercicio3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/src/Exercicio4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/src/Exercicio5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/src/Exercicio6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/src/Exercicio7.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/Lista2/src/Exercicio8.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework2/src/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework2/src/Conta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework2/src/ContaCorrente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework2/src/ContaPoupanca.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework2/src/Contato.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework2/src/Endereco.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework2/src/Impressao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework2/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework2/src/Movimentacao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework3/src/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework3/src/Conta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework3/src/ContaCorrente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework3/src/ContaPagamento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework3/src/ContaPoupanca.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework3/src/Contato.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework3/src/Endereco.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework3/src/Impressao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework3/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente-homework3/src/Movimentacao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente/src/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente/src/ContaCorrente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente/src/Contato.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente/src/Endereco.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 1/conta-corrente/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 2/Aula1-Ex1.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 2/Aula1-Ex2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 2/Aula2-Ex1.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 2/Aula2-Ex2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 2/Aula3-Ex1.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 2/Aula3-Ex2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 2/Homework1.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 2/Homework2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../modulo 2/Homework3.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Aula1-ex1.postman_collection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../homework1_1.postman_collection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../homework1_2.postman_collection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../homework2.postman_collection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../homework3.postman_collection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/PessoaapiApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/config/PropertieReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/controller/ContatoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/controller/EnderecoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/controller/PessoaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/dto/ContatoCreateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/dto/ContatoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/dto/EnderecoCreateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/dto/EnderecoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/dto/PessoaCreateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/dto/PessoaDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/entity/Contato.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/entity/Endereco.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/entity/Pessoa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/exception/CustomGlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/exception/RegraDeNegocioException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/repository/ContatoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/repository/EnderecoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/repository/PessoaRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/service/ContatoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/service/EnderecoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dbc/vemser/pessoaapi/service/PessoaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/dbc/vemser/pessoaapi/PessoaapiApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2BoOpStd5d1QizmbGJia16kPKFJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Vem Ser/vemser-backend/modulo3/pessoaapi",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Vem Ser\vemser-backend\modulo 3\pessoaapi\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="br.com.dbc.vemser.pessoaapi.PessoaApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="br.com.dbc.vemser.pessoaapi.PessoaApiApplication" />
+      <module name="pessoaapi" />
+      <option name="VM_PARAMETERS" value="-DSpring.mail.username=cassia.guimaraes@dbccompany.com.br -DSpring.mail.password=s&amp;nh@9763" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.dbc.vemser.pessoaapi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.br.com.dbc.vemser.pessoaapi.PessoaApiApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2b822dee-b8b8-4153-9f52-fabaa339c6b2" name="Changes" comment="" />
+      <created>1657569181010</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657569181010</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

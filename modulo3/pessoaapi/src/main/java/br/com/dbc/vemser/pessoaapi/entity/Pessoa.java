@@ -21,4 +21,5 @@ public class Pessoa {
     @NotEmpty(message = "O campo cpf não pode ser nulo nem vazio")
     @Size(min = 11, max = 11, message = "O campo cpf deve conter 11 caracteres")
     private String cpf;
+    private String email;
 }
