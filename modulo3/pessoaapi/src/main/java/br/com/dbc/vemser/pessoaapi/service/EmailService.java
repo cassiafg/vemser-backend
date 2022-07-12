@@ -67,8 +67,20 @@ public class EmailService {
         message.setText("Olá " +pessoaDTO.getNome()+ ", \n" +
                 "Estamos felizes em ter você em nosso sistema :) \n"+
                 "Seu cadastro foi realizado com sucesso, seu identificador é " +pessoaDTO.getIdPessoa()+"\n" +
-                "Qualquer dúvida é só contatar o suporte pelo e-mail cassia.guimaraes@dbccompany.com.br \n"+
+                "Qualquer dúvida é só contatar o suporte pelo e-mail suporte@sistema.com.br \n"+
                 "Att, Sistema");
+        emailSender.send(message);
+    }
+
+    public void sendEmailAlterarPessoa(PessoaDTO pessoaDTO){
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(from);
+        message.setTo(pessoaDTO.getEmail());
+        message.setSubject("Atualização cadastral");
+        message.setText("Olá "+pessoaDTO.getNome()+ ", \n"+
+                "Seus dados foram atualizados em nosso sistema :) \n"+
+                "Qualquer dúvida é só contatar nosso suporte pelo e-mail suporte@sistema.com.br \n"+
+                "Att, \n Sistema.");
         emailSender.send(message);
     }
     public void sendEmail() {

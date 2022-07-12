@@ -58,6 +58,7 @@ public class PessoaService {
         pessoaDTO.setCpf(pessoaAtualizar.getCpf());
         pessoaDTO.setNome(pessoaAtualizar.getNome());
         pessoaDTO.setDataNascimento(pessoaAtualizar.getDataNascimento());
+        emailService.sendEmailAlterarPessoa(pessoaDTO);
         return pessoaDTO;
     }
 
