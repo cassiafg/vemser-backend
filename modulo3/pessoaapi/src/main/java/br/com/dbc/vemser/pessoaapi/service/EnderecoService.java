@@ -22,6 +22,8 @@ public class EnderecoService {
     private PessoaService pessoaService;
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private EmailService emailService;
 
     public EnderecoDTO create (Integer id, EnderecoCreateDTO endereco) throws Exception{
         log.info("Buscando pessoa pelo id...");
@@ -34,6 +36,7 @@ public class EnderecoService {
         //--------------------------------------------------------------
         EnderecoDTO enderecoDTO = objectMapper.convertValue(novoEndereco, EnderecoDTO.class);
         log.info("Endereço criado com sucesso!");
+        emailService.sendEmailCriarEndereco(pessoaService.findById(id));
         return enderecoDTO;
     }
 

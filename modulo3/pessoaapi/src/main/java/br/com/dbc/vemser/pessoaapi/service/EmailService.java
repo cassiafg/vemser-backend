@@ -63,7 +63,7 @@ public class EmailService {
     public void sendEmailCriarPessoa(PessoaDTO pessoaDTO){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
-        message.setText(pessoaDTO.getEmail());
+        message.setTo(pessoaDTO.getEmail());
         message.setSubject("Bem vindo(a)!");
         message.setText("Olá " +pessoaDTO.getNome()+ ", \n" +
                 "Estamos felizes em ter você em nosso sistema :) \n"+
@@ -96,6 +96,31 @@ public class EmailService {
                 "Att, \n Sistema.");
         emailSender.send(message);
     }
+    public void sendEmailCriarEndereco(Pessoa pessoa){
+        MimeMessage mimeMessage = emailSender.createMimeMessage();
+        try {
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+
+            mimeMessageHelper.setFrom(from);
+            mimeMessageHelper.setTo(pessoa.getEmail());
+            mimeMessageHelper.setSubject("Novo endereço adicionado");
+            mimeMessageHelper.setText(getContentFromTemplateCriarEndereco(pessoa), true);
+
+            emailSender.send(mimeMessageHelper.getMimeMessage());
+        } catch  (MessagingException | IOException | TemplateException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getContentFromTemplateCriarEndereco(Pessoa pessoa) throws IOException, TemplateException {
+        Map<String, Object> dados = new HashMap<>();
+        dados.put("nome", pessoa.getNome());
+
+        Template template = fmConfiguration.getTemplate("emailCriarEndereco-template.ftl");
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, dados);
+        return html;
+    }
+
     public void sendEmail() {
         MimeMessage mimeMessage = emailSender.createMimeMessage();
         try {
