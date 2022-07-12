@@ -121,6 +121,56 @@ public class EmailService {
         return html;
     }
 
+    public void sendEmailAlterarEndereco(Pessoa pessoa){
+        MimeMessage mimeMessage = emailSender.createMimeMessage();
+        try {
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+
+            mimeMessageHelper.setFrom(from);
+            mimeMessageHelper.setTo(pessoa.getEmail());
+            mimeMessageHelper.setSubject("Endereço atualizado");
+            mimeMessageHelper.setText(getContentFromTemplateAlterarEndereco(pessoa), true);
+
+            emailSender.send(mimeMessageHelper.getMimeMessage());
+        } catch  (MessagingException | IOException | TemplateException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getContentFromTemplateAlterarEndereco(Pessoa pessoa) throws IOException, TemplateException {
+        Map<String, Object> dados = new HashMap<>();
+        dados.put("nome", pessoa.getNome());
+
+        Template template = fmConfiguration.getTemplate("emailAlterarEndereco-template.ftl");
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, dados);
+        return html;
+    }
+
+    public void sendEmailDeletarEndereco(Pessoa pessoa){
+        MimeMessage mimeMessage = emailSender.createMimeMessage();
+        try {
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+
+            mimeMessageHelper.setFrom(from);
+            mimeMessageHelper.setTo(pessoa.getEmail());
+            mimeMessageHelper.setSubject("Endereço excluído");
+            mimeMessageHelper.setText(getContentFromTemplateDeletarEndereco(pessoa), true);
+
+            emailSender.send(mimeMessageHelper.getMimeMessage());
+        } catch  (MessagingException | IOException | TemplateException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getContentFromTemplateDeletarEndereco(Pessoa pessoa) throws IOException, TemplateException {
+        Map<String, Object> dados = new HashMap<>();
+        dados.put("nome", pessoa.getNome());
+
+        Template template = fmConfiguration.getTemplate("emailDeletarEndereco-template.ftl");
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, dados);
+        return html;
+    }
+
     public void sendEmail() {
         MimeMessage mimeMessage = emailSender.createMimeMessage();
         try {

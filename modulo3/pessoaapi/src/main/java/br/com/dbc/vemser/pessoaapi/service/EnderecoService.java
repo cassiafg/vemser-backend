@@ -77,12 +77,14 @@ public class EnderecoService {
         enderecoDTO.setEstado(endereco.getEstado());
         enderecoDTO.setPais(endereco.getPais());
         log.warn("Endereço atualizado com sucesso!");
+        emailService.sendEmailAlterarEndereco(pessoaService.findById(id));
         return enderecoDTO;
     }
 
     public void delete(Integer id) throws Exception {
         enderecoRepository.list().remove(findEnderecoById(id));
         log.info("Endereço deletado com sucesso!");
+        emailService.sendEmailDeletarEndereco(pessoaService.findById(id));
     }
 
     public Endereco findEnderecoById(Integer id) throws Exception{
