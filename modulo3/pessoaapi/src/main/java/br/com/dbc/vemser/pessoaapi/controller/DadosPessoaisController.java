@@ -27,17 +27,17 @@ public class DadosPessoaisController {
     }
 
     @PutMapping("/{cpf}")
-    public DadosPessoaisDTO update(@PathVariable String cpf, @RequestBody DadosPessoaisDTO dadosPessoaisDTO){
+    public DadosPessoaisDTO update(@PathVariable("cpf") String cpf, @RequestBody DadosPessoaisDTO dadosPessoaisDTO){
         return client.put(cpf, dadosPessoaisDTO);
     }
 
     @DeleteMapping("/{cpf}")
-    public void delete(@PathVariable String cpf){
+    public void delete(@PathVariable("cpf") String cpf){
         client.delete(cpf);
     }
 
     @GetMapping("/{cpf}")
-    public DadosPessoaisDTO listByCpf (@PathVariable String cpf){
+    public DadosPessoaisDTO listByCpf (@PathVariable("cpf") String cpf){
         return client.get(cpf);
     }
 
