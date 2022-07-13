@@ -34,7 +34,7 @@ public class EnderecoController {
     @GetMapping  //localhost:8080/endereco
     public List<EnderecoDTO> list(){ return enderecoService.list();}
 
-    @Operation(summary = "Listar endereço por ID", description = "Lista o endereço associado a um ID")
+    @Operation(summary = "Listar endereço por ID", description = "Lista o endereço associado ao ID Endereço informado")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "Retorna o endereço associado ao ID informado"),
@@ -45,7 +45,7 @@ public class EnderecoController {
     @GetMapping("/{idEndereco}")  //localhost:8080/endereco/1
     public List<EnderecoDTO> listById(@PathVariable ("idEndereco") Integer id) { return enderecoService.listById(id);}
 
-    @Operation(summary = "Listar endereços por ID da pessoa", description = "Lista todos os endereços associados a um ID pessoa")
+    @Operation(summary = "Listar endereços por ID da pessoa", description = "Lista todos os endereços associados ao ID pessoa informado")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "Retorna a lista dos endereços associados ao ID pessoa informado"),

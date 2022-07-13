@@ -1,9 +1,7 @@
 package br.com.dbc.vemser.pessoaapi.entity;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
-import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Getter

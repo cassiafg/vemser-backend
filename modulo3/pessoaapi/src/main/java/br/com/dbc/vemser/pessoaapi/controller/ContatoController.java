@@ -37,7 +37,7 @@ public class ContatoController {
         return contatoService.list();
     }
 
-    @Operation(summary = "Listar contatos pelo ID da pessoa", description = "Lista os contatos do banco associados ao ID da pessoa informado")
+    @Operation(summary = "Listar contatos pelo ID da pessoa", description = "Lista os contatos do banco associados ao ID Pessoa informado")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "Retorna a lista de contatos da pessoa"),
@@ -51,7 +51,7 @@ public class ContatoController {
     }
 
 
-    @Operation(summary = "Criar contatos", description = "Cria um novo contato")
+    @Operation(summary = "Criar contatos", description = "Cria um novo contato para a pessoa associada ao ID da pessoa informado")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "Contato criado com sucesso"),
@@ -80,7 +80,7 @@ public class ContatoController {
     }
 
 
-    @Operation(summary = "Apagar contatos", description = "Apaga um contato do banco")
+    @Operation(summary = "Apagar contatos", description = "Apaga um contato do banco associado ao ID Contato informado")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "Contato excluído com sucesso"),

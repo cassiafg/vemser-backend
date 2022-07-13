@@ -25,6 +25,6 @@ public class PessoaCreateDTO {
     @Size(min = 11, max = 11, message = "O campo cpf deve conter 11 caracteres")
     private String cpf;
 
-    @Schema(description = "E-mail da Pessoa")
+    @Schema(description = "E-mail da Pessoa", nullable = true)
     private String email;
 }
