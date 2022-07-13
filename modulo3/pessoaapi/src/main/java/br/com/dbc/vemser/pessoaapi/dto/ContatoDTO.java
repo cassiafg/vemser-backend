@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 public class ContatoDTO extends ContatoCreateDTO{
-    @Schema(description = "ID único do contato")
-    @NotNull
+    @Schema(description = "Identificador único do contato")
+    @NotNull(message = "O campo ID Contato não pode ser nulo")
     private Integer idContato;
 }

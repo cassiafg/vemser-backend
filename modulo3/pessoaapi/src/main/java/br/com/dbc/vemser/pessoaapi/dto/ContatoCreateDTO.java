@@ -4,15 +4,17 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
 public class ContatoCreateDTO {
 
-    @Schema(description = "ID da pessoa")
+    @Schema(description = "Identificador único da pessoa")
+    @NotNull(message = "O campo ID Pessoa não pode ser nulo")
     private Integer idPessoa;
 
-    @Schema(description = "Número de telefone")
+    @Schema(description = "Número de telefone", maxLength = 13)
     @NotBlank(message = "O campo número não pode ser nulo")
     @Size(min = 1, max = 13, message = "o campo número deve conter no máximo 13 caracteres")
     private String numero;
