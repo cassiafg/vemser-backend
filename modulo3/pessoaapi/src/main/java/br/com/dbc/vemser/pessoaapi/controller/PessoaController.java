@@ -34,8 +34,8 @@ public class PessoaController {
     @Autowired
     private EmailService emailService;
 
-    @Value("${spring.application.name}")
-    private String app;
+    //@Value("${spring.application.name}")
+    //private String app;
 
     @Operation(summary = "Listar pessoas", description = "Lista todas as pessoas do banco")
     @ApiResponses(
