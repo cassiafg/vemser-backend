@@ -4,6 +4,7 @@ import br.com.dbc.vemser.pessoaapi.dto.PessoaCreateDTO;
 import br.com.dbc.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.dbc.vemser.pessoaapi.config.PropertieReader;
 import br.com.dbc.vemser.pessoaapi.entity.PessoaEntity;
+import br.com.dbc.vemser.pessoaapi.repository.PessoaRepository;
 import br.com.dbc.vemser.pessoaapi.service.EmailService;
 import br.com.dbc.vemser.pessoaapi.service.PessoaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,11 +14,13 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -33,6 +36,9 @@ public class PessoaController {
 
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    private PessoaRepository pessoaRepository;
 
     //@Value("${spring.application.name}")
     //private String app;
@@ -102,6 +108,24 @@ public class PessoaController {
     public void delete(@PathVariable("idPessoa") Integer id) throws Exception {
         pessoaService.delete(id);
     }
+
+    @GetMapping("/nome")
+    public PessoaEntity findByNomeContainsIgnoreCase(@RequestParam("nome") String nome) {
+        return pessoaRepository.findByNomeContainsIgnoreCase(nome);
+    }
+
+    @GetMapping("/cpf")
+    public PessoaEntity findByCpf(@RequestParam("cpf") String cpf){
+        return pessoaRepository.findByCpf(cpf);
+    }
+
+    @GetMapping("/data_nascimento")
+    public List<PessoaEntity> findByDataNascimentoBetween(@RequestParam("dtInicial") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dtInicial,
+                                                          @RequestParam("dtFinal") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dtFinal){
+        return pessoaRepository.findByDataNascimentoBetween(dtInicial, dtFinal);
+    }
+
+
 
     //    @GetMapping("/ambiente")
 //    public String getAmbiente(){
