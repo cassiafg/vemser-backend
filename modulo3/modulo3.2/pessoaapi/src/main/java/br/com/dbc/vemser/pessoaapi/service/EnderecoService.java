@@ -2,7 +2,7 @@ package br.com.dbc.vemser.pessoaapi.service;
 
 import br.com.dbc.vemser.pessoaapi.dto.EnderecoCreateDTO;
 import br.com.dbc.vemser.pessoaapi.dto.EnderecoDTO;
-import br.com.dbc.vemser.pessoaapi.entity.Endereco;
+import br.com.dbc.vemser.pessoaapi.entity.EnderecoEntity;
 import br.com.dbc.vemser.pessoaapi.entity.PessoaEntity;
 import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.dbc.vemser.pessoaapi.repository.EnderecoRepository;
@@ -31,8 +31,8 @@ public class EnderecoService {
         log.info("Pessoa encontrada!");
         endereco.setIdPessoa(pessoaRecuperada.getIdPessoa());
         log.info("Criando endereço para a pessoa...");
-        Endereco enderecoEntity = objectMapper.convertValue(endereco, Endereco.class);
-        Endereco novoEndereco = enderecoRepository.create(enderecoEntity);
+        EnderecoEntity enderecoEntity = objectMapper.convertValue(endereco, EnderecoEntity.class);
+        EnderecoEntity novoEndereco = enderecoRepository.save(enderecoEntity);
         //--------------------------------------------------------------
         EnderecoDTO enderecoDTO = objectMapper.convertValue(novoEndereco, EnderecoDTO.class);
         log.info("Endereço criado com sucesso!");
@@ -43,7 +43,7 @@ public class EnderecoService {
     public List<EnderecoDTO> list(){
         log.info("Listando endereços...");
         log.info("Endereços listados com sucesso!");
-        return enderecoRepository.list().stream()
+        return enderecoRepository.findAll().stream()
                 .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
                 .collect(Collectors.toList());
     }
@@ -64,7 +64,7 @@ public class EnderecoService {
 
     public EnderecoDTO update(Integer id,
                           EnderecoCreateDTO endereco) throws Exception {
-        Endereco enderecoEntity = objectMapper.convertValue(endereco, Endereco.class);
+        EnderecoEntity enderecoEntity = objectMapper.convertValue(endereco, EnderecoEntity.class);
         //-------------------------------------------------------------------------
         EnderecoDTO enderecoDTO;
         enderecoDTO = objectMapper.convertValue(findEnderecoById(id), EnderecoDTO.class);
@@ -82,14 +82,14 @@ public class EnderecoService {
     }
 
     public void delete(Integer id) throws Exception {
-        enderecoRepository.list().remove(findEnderecoById(id));
+        enderecoRepository.findAll().remove(findEnderecoById(id));
         log.info("Endereço deletado com sucesso!");
         emailService.sendEmailDeletarEndereco(pessoaService.returnPessoaById(id));
     }
 
-    public Endereco findEnderecoById(Integer id) throws Exception{
+    public EnderecoEntity findEnderecoById(Integer id) throws Exception{
         log.info("Buscando endereço...");
-        Endereco enderecoRecuperado = enderecoRepository.list().stream()
+        EnderecoEntity enderecoRecuperado = enderecoRepository.findAll().stream()
                 .filter(x -> x.getIdEndereco() == id.longValue())
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
