@@ -12,12 +12,13 @@ import javax.persistence.*;
 public class EnderecoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONTATO_SEQ")
-    @SequenceGenerator(name = "CONTATO_SEQ", sequenceName = "seq_endereco_contato", allocationSize = 1)
-    @Column(name = "id_contato")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ENDERECO_SEQ")
+    @SequenceGenerator(name = "ENDERECO_SEQ", sequenceName = "seq_endereco_contato", allocationSize = 1)
+    @Column(name = "id_endereco")
     private Integer idEndereco;
 
-    private Integer idPessoa;
+    //@Column(name="id_pessoa")
+    //private Integer idPessoa;
 
     @Column(name="tipo")
     private Integer tipo;
