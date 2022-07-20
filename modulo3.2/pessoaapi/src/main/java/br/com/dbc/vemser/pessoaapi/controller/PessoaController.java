@@ -125,6 +125,21 @@ public class PessoaController {
         return pessoaRepository.findByDataNascimentoBetween(dtInicial, dtFinal);
     }
 
+    @GetMapping("/{idPessoa}/enderecos")
+    public List<PessoaDTO> listPessoaWithEnderecos(@RequestParam(required = false) Integer id) {
+        return pessoaService.listPessoaWithEnderecos(id);
+    }
+
+    @GetMapping("/{idPessoa}/contatos")
+    public List<PessoaDTO> listPessoaWithContatos(@RequestParam(required = false) Integer id) {
+        return pessoaService.listPessoaWithContatos(id);
+    }
+
+    @GetMapping("/{idPessoa}/pets")
+    public List<PessoaDTO> listPessoaWithPets(@RequestParam(required = false) Integer id) {
+        return pessoaService.listPessoaWithPets(id);
+    }
+
 
 
     //    @GetMapping("/ambiente")
