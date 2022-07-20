@@ -4,6 +4,7 @@ import br.com.dbc.vemser.pessoaapi.dto.PetCreateDTO;
 import br.com.dbc.vemser.pessoaapi.dto.PetDTO;
 import br.com.dbc.vemser.pessoaapi.entity.PessoaEntity;
 import br.com.dbc.vemser.pessoaapi.entity.PetEntity;
+import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.dbc.vemser.pessoaapi.repository.PetRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -31,20 +32,21 @@ public class PetService {
                 .collect(Collectors.toList());
     }
 
-    public PetDTO create (Integer id, PetCreateDTO pet) throws Exception{
-        PessoaEntity pessoaRecuperada = pessoaService.returnPessoaById(id);
-        pet.setIdPessoa(pessoaRecuperada.getIdPessoa());
+    public PetDTO create (Integer idPessoa, PetCreateDTO pet) throws Exception {
+        PessoaEntity pessoaRecuperada = pessoaService.returnPessoaById(idPessoa);
         log.info("Criando pet...");
         PetEntity petEntity = objectMapper.convertValue(pet, PetEntity.class);
+        petEntity.setPessoa(pessoaRecuperada);
         PetEntity petCriado = petRepository.save(petEntity);
         //----------------------------------------------------------------
         PetDTO petDTO = objectMapper.convertValue(petCriado, PetDTO.class);
+        petDTO.setIdPessoa(idPessoa);
         log.warn("Pet criado com sucesso!");
         return petDTO;
     }
 
     public PetDTO update(Integer id,
-                             PetCreateDTO petAtualizar) throws Exception {
+                             PetCreateDTO petAtualizar) {
         PetEntity petEntity = objectMapper.convertValue(petAtualizar, PetEntity.class);
         //--------------------------------------
         log.info("Buscando o pet a atualizar...");
@@ -56,7 +58,7 @@ public class PetService {
         return petDTO;
     }
 
-    public void delete(Integer id) throws Exception {
+    public void delete(Integer id) {
         petRepository.deleteById(id);
         log.info("Pet deletado com sucesso!");
     }

@@ -11,9 +11,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class PetCreateDTO {
 
-    @Schema(description = "Identificador único da Pessoa")
-    @NotNull(message = "O campo idPessoa não pode ser nulo")
-    private Integer idPessoa;
+
 
     @Schema(description = "Nome do Pet")
     @NotEmpty(message = "O campo nome do Pet não pode ser vazio nem nulo")

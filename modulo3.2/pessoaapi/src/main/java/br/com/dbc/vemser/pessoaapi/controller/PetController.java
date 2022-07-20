@@ -2,6 +2,7 @@ package br.com.dbc.vemser.pessoaapi.controller;
 
 import br.com.dbc.vemser.pessoaapi.dto.PetCreateDTO;
 import br.com.dbc.vemser.pessoaapi.dto.PetDTO;
+import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.dbc.vemser.pessoaapi.service.PetService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -40,9 +41,9 @@ public class PetController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @PostMapping //localhost:8080/pet
-    public ResponseEntity<PetDTO> create (@PathVariable("idPet") Integer id, @Valid @RequestBody PetCreateDTO pet) throws Exception{
-        return ResponseEntity.ok(petService.create(id, pet));
+    @PostMapping ("/{idPessoa}")//localhost:8080/pet
+    public PetDTO create (@PathVariable("idPessoa") Integer id, @Valid @RequestBody PetCreateDTO pet) throws Exception{
+        return petService.create(id, pet);
     }
 
     @Operation(summary = "Alterar pet", description = "Altera o pet associado ao ID Pet informado")
@@ -54,9 +55,9 @@ public class PetController {
             }
     )
     @PutMapping("/{idPet}") // localhost:8080/pet/1
-    public ResponseEntity<PetDTO> update(@PathVariable("idPet") Integer id,
-                                              @Valid @RequestBody PetCreateDTO pet) throws Exception {
-        return ResponseEntity.ok(petService.update(id, pet));
+    public PetDTO update(@PathVariable("idPet") Integer id,
+                                              @Valid @RequestBody PetCreateDTO pet){
+        return petService.update(id, pet);
     }
 
     @Operation(summary = "Apagar pet", description = "Apaga o pet associado ao ID Pet informado")
@@ -68,7 +69,7 @@ public class PetController {
             }
     )
     @DeleteMapping("/{idPet}") // localhost:8080/pet/1
-    public void delete(@PathVariable("idPet") Integer id) throws Exception {
+    public void delete(@PathVariable("idPet") Integer id){
         petService.delete(id);
     }
 }

@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class PetEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PET_SEQ")
-    @SequenceGenerator(name = "PET_SEQ", sequenceName = "se_pet", allocationSize = 1)
+    @SequenceGenerator(name = "PET_SEQ", sequenceName = "seq_pet", allocationSize = 1)
     @Column(name = "id_pet")
     private Integer idPet;
 
