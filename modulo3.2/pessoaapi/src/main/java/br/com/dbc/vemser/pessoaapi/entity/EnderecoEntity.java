@@ -1,5 +1,6 @@
 package br.com.dbc.vemser.pessoaapi.entity;
 
+import br.com.dbc.vemser.pessoaapi.enums.TipoEndereco;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -19,11 +20,11 @@ public class EnderecoEntity {
     @Column(name = "id_endereco")
     private Integer idEndereco;
 
-    @Column(name = "id_pessoa", insertable = false, updatable = false)
-    private Integer idPessoa;
+//    @Column(name = "id_pessoa", insertable = false, updatable = false)
+//    private Integer idPessoa;
 
     @Column(name="tipo")
-    private Integer tipo;
+    private TipoEndereco tipo;
 
     @Column(name = "logradouro")
     private String logradouro;

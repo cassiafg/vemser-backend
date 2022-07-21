@@ -1,8 +1,10 @@
 package br.com.dbc.vemser.pessoaapi.dto;
 
+import br.com.dbc.vemser.pessoaapi.enums.TipoEndereco;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -12,6 +14,9 @@ public class EnderecoCreateDTO {
     @Schema(description = "Identificador único da pessoa", nullable = false)
     @NotNull(message = "O campo ID Pessoa não pode ser nulo")
     private Integer idPessoa;
+
+    @Schema(description = "Tipo do endereço")
+    private TipoEndereco tipo;
 
     @Schema(description = "Logradouro do endereço", nullable = false)
     @NotEmpty(message = "O campo logradouro não pode ser vazio")

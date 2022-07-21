@@ -3,12 +3,13 @@ package br.com.dbc.vemser.pessoaapi.controller;
 import br.com.dbc.vemser.pessoaapi.config.PropertieReader;
 import br.com.dbc.vemser.pessoaapi.dto.EnderecoCreateDTO;
 import br.com.dbc.vemser.pessoaapi.dto.EnderecoDTO;
+import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
+import br.com.dbc.vemser.pessoaapi.repository.EnderecoRepository;
 import br.com.dbc.vemser.pessoaapi.service.EnderecoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,9 @@ public class EnderecoController {
     private PropertieReader propertieReader;
     @Autowired
     private EnderecoService enderecoService;
+
+    @Autowired
+    private EnderecoRepository enderecoRepository;
 
     @Operation(summary = "Listar endereços", description = "Lista todos os endereços do banco")
     @ApiResponses(
@@ -65,8 +69,8 @@ public class EnderecoController {
             }
     )
     @PostMapping("/{idPessoa}") //localhost:8080/endereco/1
-    public ResponseEntity<EnderecoDTO> create (@PathVariable("idPessoa") Integer id, @Valid @RequestBody EnderecoCreateDTO endereco) throws Exception{
-        return ResponseEntity.ok(enderecoService.create(id, endereco));
+    public EnderecoDTO create (@PathVariable("idPessoa") Integer id, @Valid @RequestBody EnderecoCreateDTO endereco) throws RegraDeNegocioException{
+        return enderecoService.create(id, endereco);
     }
 
     @Operation(summary = "Alterar endereço", description = "Altera o endereço associado ao ID Endereço informado")
@@ -78,9 +82,9 @@ public class EnderecoController {
             }
     )
     @PutMapping("/{idEndereco}") // localhost:8080/endereco/1
-    public ResponseEntity<EnderecoDTO> update(@PathVariable("idEndereco") Integer id,
-                          @Valid @RequestBody EnderecoCreateDTO endereco) throws Exception {
-        return ResponseEntity.ok(enderecoService.update(id, endereco));
+    public EnderecoDTO update(@PathVariable("idEndereco") Integer id,
+                          @Valid @RequestBody EnderecoCreateDTO endereco) throws RegraDeNegocioException {
+        return enderecoService.update(id, endereco);
     }
 
     @Operation(summary = "Apagar endereço", description = "Apaga o endereço associado ao ID Endereço informado")
@@ -92,7 +96,14 @@ public class EnderecoController {
             }
     )
     @DeleteMapping("/{idEndereco}") // localhost:8080/endereco/1
-    public void delete(@PathVariable("idEndereco") Integer id) throws Exception {
+    public void delete(@PathVariable("idEndereco") Integer id) throws RegraDeNegocioException {
         enderecoService.delete(id);
     }
+
+//    @GetMapping("/enderecoByPais")
+//    public List<EnderecoEntity> enderecoByPais(@RequestParam String pais){
+//        return enderecoRepository.enderecoByPais(pais);
+//    }
+
+
 }
