@@ -1,5 +1,6 @@
 package br.com.dbc.vemser.pessoaapi.dto;
 
+import br.com.dbc.vemser.pessoaapi.enums.TipoContato;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -13,6 +14,9 @@ public class ContatoCreateDTO {
     @Schema(description = "Identificador único da pessoa")
     @NotNull(message = "O campo ID Pessoa não pode ser nulo")
     private Integer idPessoa;
+
+    @Schema(description = "Tipo do contato")
+    private TipoContato tipo;
 
     @Schema(description = "Número de telefone", maxLength = 13)
     @NotBlank(message = "O campo número não pode ser nulo")

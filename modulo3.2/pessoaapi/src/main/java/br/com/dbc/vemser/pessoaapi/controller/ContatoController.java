@@ -3,6 +3,7 @@ package br.com.dbc.vemser.pessoaapi.controller;
 import br.com.dbc.vemser.pessoaapi.config.PropertieReader;
 import br.com.dbc.vemser.pessoaapi.dto.ContatoCreateDTO;
 import br.com.dbc.vemser.pessoaapi.dto.ContatoDTO;
+import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.dbc.vemser.pessoaapi.service.ContatoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -60,7 +61,7 @@ public class ContatoController {
             }
     )
     @PostMapping("/{idPessoa}") //localhost:8080/contato/1
-    public ResponseEntity<ContatoDTO> create (@PathVariable("idPessoa") Integer id, @Valid @RequestBody ContatoCreateDTO contato) throws Exception {
+    public ResponseEntity<ContatoDTO> create (@PathVariable("idPessoa") Integer id, @Valid @RequestBody ContatoCreateDTO contato) throws RegraDeNegocioException {
         return ResponseEntity.ok(contatoService.create(id, contato));
     }
 
@@ -75,7 +76,7 @@ public class ContatoController {
     )
     @PutMapping("/{idContato}") // localhost:8080/contato/4
     public ResponseEntity<ContatoDTO> update(@PathVariable("idContato") Integer id,
-                          @Valid@RequestBody ContatoCreateDTO contatoAtualizar) throws Exception {
+                          @Valid@RequestBody ContatoCreateDTO contatoAtualizar) throws RegraDeNegocioException {
         return ResponseEntity.ok(contatoService.update(id, contatoAtualizar));
     }
 
@@ -89,7 +90,7 @@ public class ContatoController {
             }
     )
     @DeleteMapping("/{idContato}") // localhost:8080/contato/2
-    public void delete(@PathVariable("idContato") Integer id) throws Exception {
+    public void delete(@PathVariable("idContato") Integer id) throws RegraDeNegocioException {
         contatoService.delete(id);
     }
 }

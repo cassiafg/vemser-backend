@@ -1,5 +1,6 @@
 package br.com.dbc.vemser.pessoaapi.entity;
 
+import br.com.dbc.vemser.pessoaapi.enums.TipoContato;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,7 +23,8 @@ public class ContatoEntity {
     private Integer idPessoa;
 
     @Column(name = "tipo")
-    private Integer tipo;
+    @Enumerated(EnumType.ORDINAL)
+    private TipoContato tipo;
 
     @Column(name= "numero")
     private String numero;

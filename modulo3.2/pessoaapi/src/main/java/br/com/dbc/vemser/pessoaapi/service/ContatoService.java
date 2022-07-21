@@ -28,16 +28,13 @@ public class ContatoService {
     private ObjectMapper objectMapper;
 
 
-    public ContatoDTO create (Integer id, ContatoCreateDTO contato) throws Exception{
-        PessoaEntity pessoaRecuperada = pessoaService.returnPessoaById(id);
-        contato.setIdPessoa(pessoaRecuperada.getIdPessoa());
+    public ContatoDTO create (Integer idPessoa, ContatoCreateDTO contato) throws RegraDeNegocioException{
         log.info("Criando contato...");
         ContatoEntity contatoEntity = objectMapper.convertValue(contato, ContatoEntity.class);
-        ContatoEntity contatoCriado = contatoRepository.save(contatoEntity);
-        //----------------------------------------------------------------
-        ContatoDTO contatoDTO = objectMapper.convertValue(contatoCriado, ContatoDTO.class);
+        contatoEntity.setPessoa(pessoaService.returnPessoaById(idPessoa));
+        contatoRepository.save(contatoEntity);
         log.warn("Contato criado com sucesso!");
-        return contatoDTO;
+        return objectMapper.convertValue(contatoEntity, ContatoDTO.class);
     }
 
     public List<ContatoDTO> list(){
@@ -49,20 +46,20 @@ public class ContatoService {
     }
 
     public ContatoDTO update(Integer id,
-                         ContatoCreateDTO contatoAtualizar) throws Exception {
-        ContatoEntity contatoEntity = objectMapper.convertValue(contatoAtualizar, ContatoEntity.class);
+                         ContatoCreateDTO contatoAtualizar) throws RegraDeNegocioException {
+        pessoaService.returnPessoaById(contatoAtualizar.getIdPessoa());
+        ContatoEntity contatoRecuperado = returnContatoById(id);
+        objectMapper.convertValue(contatoAtualizar, ContatoEntity.class);
         //--------------------------------------
-        log.info("Buscando o contato a atualizar...");
-        ContatoDTO contatoDTO;
-        contatoDTO = objectMapper.convertValue(returnContatoById(id), ContatoDTO.class);
-        contatoDTO.setIdPessoa(contatoAtualizar.getIdPessoa());
-        contatoDTO.setNumero(contatoAtualizar.getNumero());
-        contatoDTO.setDescricao(contatoAtualizar.getDescricao());
+        log.info("Atualizando o contato...");
+//        contatoRecuperado.setTipo(contatoAtualizar.get());
+        contatoRecuperado.setNumero(contatoAtualizar.getNumero());
+        contatoRecuperado.setDescricao(contatoAtualizar.getDescricao());
         log.warn(("Contato atualizado com sucesso!"));
-        return contatoDTO;
+        return objectMapper.convertValue(contatoRepository.save(contatoRecuperado), ContatoDTO.class);
     }
 
-    public void delete(Integer id) throws Exception {
+    public void delete(Integer id) throws RegraDeNegocioException {
         contatoRepository.deleteById(id);
         log.info("Contato deletado com sucesso!");
     }
@@ -72,7 +69,7 @@ public class ContatoService {
                 .collect(Collectors.toList());
     }
 
-    public ContatoEntity returnContatoById(Integer id) throws Exception{
+    public ContatoEntity returnContatoById(Integer id) throws RegraDeNegocioException{
         log.info("Buscando contato...");
         log.info("Contato encontrado!");
         return contatoRepository.findById(id)
