@@ -37,7 +37,6 @@ public class EnderecoService {
         log.info("Criando endereço para a pessoa...");
         EnderecoEntity endrecoEntity = enderecoRepository.save(enderecoEntity);
         EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoEntity, EnderecoDTO.class);
-
         //--------------------------------------------------------------
         log.info("Endereço criado com sucesso!");
         return enderecoDTO;

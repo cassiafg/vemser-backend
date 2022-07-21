@@ -3,12 +3,10 @@ package br.com.dbc.vemser.pessoaapi.controller;
 import br.com.dbc.vemser.pessoaapi.dto.PessoaCreateDTO;
 import br.com.dbc.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.dbc.vemser.pessoaapi.config.PropertieReader;
+import br.com.dbc.vemser.pessoaapi.dto.RelatorioDTO;
 import br.com.dbc.vemser.pessoaapi.entity.PessoaEntity;
 import br.com.dbc.vemser.pessoaapi.repository.PessoaRepository;
-import br.com.dbc.vemser.pessoaapi.service.ContatoService;
-import br.com.dbc.vemser.pessoaapi.service.EmailService;
-import br.com.dbc.vemser.pessoaapi.service.PessoaService;
-import br.com.dbc.vemser.pessoaapi.service.PetService;
+import br.com.dbc.vemser.pessoaapi.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -41,6 +39,9 @@ public class PessoaController {
 
     @Autowired
     private PessoaRepository pessoaRepository;
+
+    @Autowired
+    private RelatorioService relatorioService;
 
 
     //@Value("${spring.application.name}")
@@ -146,6 +147,11 @@ public class PessoaController {
     @GetMapping("/pessoa-completo")
     public List<PessoaDTO> listPessoaCompleta(@RequestParam(required = false) Integer id){
         return pessoaService.listPessoaCompleta(id);
+    }
+
+    @GetMapping("/relatorio-personalizado")
+    public List<RelatorioDTO> relatorioPersonalizado(@RequestParam(required = false) Integer id){
+        return relatorioService.relatorioPersonalizado(id);
     }
 
 
