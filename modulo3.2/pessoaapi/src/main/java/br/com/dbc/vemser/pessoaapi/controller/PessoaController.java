@@ -143,6 +143,11 @@ public class PessoaController {
         return pessoaService.listPessoaWithPets(id);
     }
 
+    @GetMapping("/pessoa-completo")
+    public List<PessoaDTO> listPessoaCompleta(@RequestParam(required = false) Integer id){
+        return pessoaService.listPessoaCompleta(id);
+    }
+
 
 
     //    @GetMapping("/ambiente")

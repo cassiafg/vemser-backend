@@ -32,6 +32,9 @@ public class PessoaEntity {
     @Column(name= "EMAIL")
     private String email;
 
+    @Column(name= "id_pet", insertable = false, updatable = false)
+    private Integer idPet;
+
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "pessoa",
