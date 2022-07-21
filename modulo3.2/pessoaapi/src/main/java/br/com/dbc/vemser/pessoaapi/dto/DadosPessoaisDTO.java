@@ -1,5 +1,6 @@
 package br.com.dbc.vemser.pessoaapi.dto;
 
+import br.com.dbc.vemser.pessoaapi.enums.Sexo;
 import lombok.Data;
 
 @Data
