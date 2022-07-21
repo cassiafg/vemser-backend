@@ -32,7 +32,7 @@ public class PetService {
                 .collect(Collectors.toList());
     }
 
-    public PetDTO create (Integer idPessoa, PetCreateDTO pet) throws Exception {
+    public PetDTO create (Integer idPessoa, PetCreateDTO pet) throws RegraDeNegocioException {
         PessoaEntity pessoaRecuperada = pessoaService.returnPessoaById(idPessoa);
         log.info("Criando pet...");
         PetEntity petEntity = objectMapper.convertValue(pet, PetEntity.class);
@@ -45,21 +45,23 @@ public class PetService {
         return petDTO;
     }
 
-    public PetDTO update(Integer id,
-                             PetCreateDTO petAtualizar) {
-        PetEntity petEntity = objectMapper.convertValue(petAtualizar, PetEntity.class);
-        //--------------------------------------
-        log.info("Buscando o pet a atualizar...");
-        PetDTO petDTO;
-        petDTO = objectMapper.convertValue(petRepository.getById(id), PetDTO.class);
-        petDTO.setNome(petAtualizar.getNome());
-        petDTO.setTipo(petAtualizar.getTipo());
-        log.warn(("Pet atualizado com sucesso!"));
-        return petDTO;
+    public PetDTO update(Integer idPet,
+                             PetCreateDTO petAtualizar) throws RegraDeNegocioException {
+        PetEntity petEntity = findById(idPet);
+        petEntity.setPessoa(pessoaService.returnPessoaById(petAtualizar.getIdPessoa()));
+        petEntity.setNome(petAtualizar.getNome());
+        petEntity.setTipo(petAtualizar.getTipo());
+        petRepository.save(petEntity);
+        return objectMapper.convertValue(petEntity, PetDTO.class);
     }
 
     public void delete(Integer id) {
         petRepository.deleteById(id);
         log.info("Pet deletado com sucesso!");
+    }
+
+    public PetEntity findById(Integer id) throws RegraDeNegocioException{
+        return petRepository.findById(id)
+                .orElseThrow(() -> new RegraDeNegocioException("Pet não encontrado"));
     }
 }

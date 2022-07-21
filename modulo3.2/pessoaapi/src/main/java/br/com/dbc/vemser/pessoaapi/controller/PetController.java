@@ -55,9 +55,9 @@ public class PetController {
             }
     )
     @PutMapping("/{idPet}") // localhost:8080/pet/1
-    public PetDTO update(@PathVariable("idPet") Integer id,
-                                              @Valid @RequestBody PetCreateDTO pet){
-        return petService.update(id, pet);
+    public PetDTO update(@PathVariable("idPet") Integer idPet,
+                                              @Valid @RequestBody PetCreateDTO petAtualizar) throws RegraDeNegocioException{
+        return petService.update(idPet, petAtualizar);
     }
 
     @Operation(summary = "Apagar pet", description = "Apaga o pet associado ao ID Pet informado")
