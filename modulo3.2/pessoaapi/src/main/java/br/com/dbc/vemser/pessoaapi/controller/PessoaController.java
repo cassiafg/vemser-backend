@@ -5,8 +5,10 @@ import br.com.dbc.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.dbc.vemser.pessoaapi.config.PropertieReader;
 import br.com.dbc.vemser.pessoaapi.entity.PessoaEntity;
 import br.com.dbc.vemser.pessoaapi.repository.PessoaRepository;
+import br.com.dbc.vemser.pessoaapi.service.ContatoService;
 import br.com.dbc.vemser.pessoaapi.service.EmailService;
 import br.com.dbc.vemser.pessoaapi.service.PessoaService;
+import br.com.dbc.vemser.pessoaapi.service.PetService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -39,6 +41,7 @@ public class PessoaController {
 
     @Autowired
     private PessoaRepository pessoaRepository;
+
 
     //@Value("${spring.application.name}")
     //private String app;
@@ -125,17 +128,17 @@ public class PessoaController {
         return pessoaRepository.findByDataNascimentoBetween(dtInicial, dtFinal);
     }
 
-    @GetMapping("/{idPessoa}/enderecos")
+    @GetMapping("/enderecos")
     public List<PessoaDTO> listPessoaWithEnderecos(@RequestParam(required = false) Integer id) {
         return pessoaService.listPessoaWithEnderecos(id);
     }
 
-    @GetMapping("/{idPessoa}/contatos")
+    @GetMapping("/contatos")
     public List<PessoaDTO> listPessoaWithContatos(@RequestParam(required = false) Integer id) {
         return pessoaService.listPessoaWithContatos(id);
     }
 
-    @GetMapping("/{idPessoa}/pets")
+    @GetMapping("/pets")
     public List<PessoaDTO> listPessoaWithPets(@RequestParam(required = false) Integer id) {
         return pessoaService.listPessoaWithPets(id);
     }

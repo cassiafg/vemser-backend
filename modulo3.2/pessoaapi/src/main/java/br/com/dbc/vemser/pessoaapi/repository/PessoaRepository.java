@@ -14,4 +14,6 @@ public interface PessoaRepository extends JpaRepository<PessoaEntity, Integer> {
     PessoaEntity findByCpf(String cpf);
 
     List<PessoaEntity> findByDataNascimentoBetween(LocalDate dtInicial, LocalDate dtFinal);
+
+
 }
