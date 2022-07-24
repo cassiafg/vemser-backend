@@ -66,20 +66,13 @@ public class EnderecoService {
 
     public EnderecoDTO update(Integer id,
                           EnderecoCreateDTO enderecoAtualizar) throws RegraDeNegocioException {
-        PessoaEntity pessoaEntity = pessoaService.returnPessoaById(id);
+        PessoaEntity pessoaEntity = pessoaService.returnPessoaById(enderecoAtualizar.getIdPessoa());
         PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaEntity, PessoaDTO.class);
         EnderecoEntity enderecoRecuperado = findEnderecoById(id);
         EnderecoEntity enderecoEntity = objectMapper.convertValue(enderecoAtualizar, EnderecoEntity.class);
         //-------------------------------------------------------------------------
         enderecoEntity.setPessoas(Set.of(pessoaEntity));
         EnderecoDTO enderecoRecuperadoDTO = objectMapper.convertValue(enderecoRepository.save(enderecoRecuperado), EnderecoDTO.class);
-        enderecoRecuperadoDTO.setLogradouro(enderecoRecuperado.getLogradouro());
-        enderecoRecuperadoDTO.setNumero(enderecoRecuperado.getNumero());
-        enderecoRecuperadoDTO.setComplemento(enderecoRecuperado.getComplemento());
-        enderecoRecuperadoDTO.setCep(enderecoRecuperado.getCep());
-        enderecoRecuperadoDTO.setCidade(enderecoRecuperado.getCidade());
-        enderecoRecuperadoDTO.setEstado(enderecoRecuperado.getEstado());
-        enderecoRecuperadoDTO.setPais(enderecoRecuperado.getPais());
         log.warn("Endereço atualizado com sucesso!");
         return enderecoRecuperadoDTO;
     }

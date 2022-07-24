@@ -47,12 +47,19 @@ public class PetService {
 
     public PetDTO update(Integer idPet,
                              PetCreateDTO petAtualizar) throws RegraDeNegocioException {
-        PetEntity petEntity = findById(idPet);
-        petEntity.setPessoa(pessoaService.returnPessoaById(petAtualizar.getIdPessoa()));
-        petEntity.setNome(petAtualizar.getNome());
-        petEntity.setTipo(petAtualizar.getTipo());
-        petRepository.save(petEntity);
-        return objectMapper.convertValue(petEntity, PetDTO.class);
+        log.info("Buscando pet para atualizar...");
+        PetEntity petRecuperado = findById(idPet);
+        PessoaEntity pessoaEntity = petRecuperado.getPessoa();
+        petRecuperado.setPessoa(null);
+
+        PessoaEntity pessoaRecuperada = pessoaService.returnPessoaById(petAtualizar.getIdPessoa());
+        log.info("Atualizando o pet...");
+
+        petRecuperado.setNome(petAtualizar.getNome());
+        petRecuperado.setTipo(petAtualizar.getTipo());
+        petRecuperado.setPessoa(pessoaRecuperada);
+        pessoaRecuperada.setPet(petRecuperado);
+        return objectMapper.convertValue(petRecuperado, PetDTO.class);
     }
 
     public void delete(Integer id) {
