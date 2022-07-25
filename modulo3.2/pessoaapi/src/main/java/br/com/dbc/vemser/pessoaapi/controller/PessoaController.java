@@ -113,32 +113,43 @@ public class PessoaController {
         pessoaService.delete(id);
     }
 
-    @GetMapping("/nome")
-    public PessoaEntity findByNomeContainsIgnoreCase(@RequestParam("nome") String nome) {
-        return pessoaRepository.findByNomeContainsIgnoreCase(nome);
-    }
-
-    @GetMapping("/cpf")
-    public PessoaEntity findByCpf(@RequestParam("cpf") String cpf){
-        return pessoaRepository.findByCpf(cpf);
-    }
-
-    @GetMapping("/data_nascimento")
-    public List<PessoaEntity> findByDataNascimentoBetween(@RequestParam("dtInicial") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dtInicial,
-                                                          @RequestParam("dtFinal") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dtFinal){
-        return pessoaRepository.findByDataNascimentoBetween(dtInicial, dtFinal);
-    }
-
+    //Pessoa com os dados de endereço
+    @Operation(summary = "Pessoa com os dados de endereço", description = "Lista a pessoa com os dados de endereço")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Dados da pessoa listados com sucesso"),
+                    @ApiResponse(responseCode = "403", description = "Você não tem permissão para acessar este recurso"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
     @GetMapping("/enderecos")
     public List<PessoaDTO> listPessoaWithEnderecos(@RequestParam(required = false) Integer id) {
         return pessoaService.listPessoaWithEnderecos(id);
     }
 
+    //Pessoa com os dados de contato
+    @Operation(summary = "Pessoa com os dados de contato", description = "Lista a pessoa com os dados de contato")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Dados da pessoa listados com sucesso"),
+                    @ApiResponse(responseCode = "403", description = "Você não tem permissão para acessar este recurso"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
     @GetMapping("/contatos")
     public List<PessoaDTO> listPessoaWithContatos(@RequestParam(required = false) Integer id) {
         return pessoaService.listPessoaWithContatos(id);
     }
 
+    //Pessoa com os dados do pet
+    @Operation(summary = "Pessoa com os dados do pet", description = "Lista a pessoa com os dados do pet")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Dados da pessoa listados com sucesso"),
+                    @ApiResponse(responseCode = "403", description = "Você não tem permissão para acessar este recurso"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
     @GetMapping("/pets")
     public List<PessoaDTO> listPessoaWithPets(@RequestParam(required = false) Integer id) {
         return pessoaService.listPessoaWithPets(id);
@@ -148,7 +159,7 @@ public class PessoaController {
     @Operation(summary = "Pessoa com todos os dados", description = "Pessoa completa com os dados de contato, endereço e pet")
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "200", description = "Dados da pessoa apagados com sucesso"),
+                    @ApiResponse(responseCode = "200", description = "Dados da pessoa listados com sucesso"),
                     @ApiResponse(responseCode = "403", description = "Você não tem permissão para acessar este recurso"),
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
@@ -163,7 +174,7 @@ public class PessoaController {
     @Operation(summary = "Relatório personalizado", description = "Relatório personalizado com os dados da pessoa")
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "200", description = "Dados da pessoa apagados com sucesso"),
+                    @ApiResponse(responseCode = "200", description = "Dados da pessoa listados com sucesso"),
                     @ApiResponse(responseCode = "403", description = "Você não tem permissão para acessar este recurso"),
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
@@ -173,6 +184,46 @@ public class PessoaController {
         return relatorioService.relatorioPersonalizado(id);
     }
 
+
+    @Operation(summary = "Listar pessoa por nome", description = "Lista os dados da pessoa a partir do nome informado")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Dados da pessoa listados com sucesso"),
+                    @ApiResponse(responseCode = "403", description = "Você não tem permissão para acessar este recurso"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/nome")
+    public PessoaEntity findByNomeContainsIgnoreCase(@RequestParam("nome") String nome) {
+        return pessoaRepository.findByNomeContainsIgnoreCase(nome);
+    }
+
+    @Operation(summary = "Listar pessoa por cpf", description = "Lista os dados da pessoa a partir do cpf informado")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Dados da pessoa listados com sucesso"),
+                    @ApiResponse(responseCode = "403", description = "Você não tem permissão para acessar este recurso"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/cpf")
+    public PessoaEntity findByCpf(@RequestParam("cpf") String cpf){
+        return pessoaRepository.findByCpf(cpf);
+    }
+
+    @Operation(summary = "Listar pessoa por data de nascimento", description = "Lista os dados da pessoa com data de nascimento entre as datas incial e final informadas")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Dados da pessoa listados com sucesso"),
+                    @ApiResponse(responseCode = "403", description = "Você não tem permissão para acessar este recurso"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/data_nascimento")
+    public List<PessoaEntity> findByDataNascimentoBetween(@RequestParam("dtInicial") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dtInicial,
+                                                          @RequestParam("dtFinal") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dtFinal){
+        return pessoaRepository.findByDataNascimentoBetween(dtInicial, dtFinal);
+    }
 
 
     //    @GetMapping("/ambiente")
