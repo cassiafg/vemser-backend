@@ -49,8 +49,6 @@ public class PetService {
                              PetCreateDTO petAtualizar) throws RegraDeNegocioException {
         log.info("Buscando pet para atualizar...");
         PetEntity petRecuperado = findById(idPet);
-        PessoaEntity pessoaEntity = petRecuperado.getPessoa();
-        petRecuperado.setPessoa(null);
 
         PessoaEntity pessoaRecuperada = pessoaService.returnPessoaById(petAtualizar.getIdPessoa());
         log.info("Atualizando o pet...");
@@ -59,6 +57,8 @@ public class PetService {
         petRecuperado.setTipo(petAtualizar.getTipo());
         petRecuperado.setPessoa(pessoaRecuperada);
         pessoaRecuperada.setPet(petRecuperado);
+        pessoaService.salvar(pessoaRecuperada);
+        petRepository.save(petRecuperado);
         return objectMapper.convertValue(petRecuperado, PetDTO.class);
     }
 

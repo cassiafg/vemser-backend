@@ -172,4 +172,8 @@ public class PessoaService {
     public PetDTO petEntityToDTO(PetEntity petEntity){
         return objectMapper.convertValue(petEntity, PetDTO.class);
     }
+
+    public PessoaEntity salvar(PessoaEntity pessoaEntity){
+        return this.pessoaRepository.save(pessoaEntity);
+    }
 }
