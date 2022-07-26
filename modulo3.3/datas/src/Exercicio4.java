@@ -11,13 +11,17 @@ public class Exercicio4 {
         ZonedDateTime showZdt = ZonedDateTime.of(show, londres);
 
         long anos = agoraZdt.until(showZdt, ChronoUnit.YEARS);
+        agoraZdt = agoraZdt.plusYears(anos);
         long meses = agoraZdt.until(showZdt, ChronoUnit.MONTHS);
+        agoraZdt = agoraZdt.plusMonths(meses);
         long dias = agoraZdt.until(showZdt, ChronoUnit.DAYS);
+        agoraZdt = agoraZdt.plusDays(dias);
         long horas = agoraZdt.until(showZdt, ChronoUnit.HOURS);
+        agoraZdt = agoraZdt.plusHours(horas);
         long minutos = agoraZdt.until(showZdt, ChronoUnit.MINUTES);
+        agoraZdt = agoraZdt.plusMinutes(minutos);
         long segundos = agoraZdt.until(showZdt, ChronoUnit.SECONDS);
         System.out.println("Faltam "+anos+" anos, "+meses+" meses, "+dias+" dias, "+horas
                 +" horas, "+minutos+", minutos e "+segundos+" segundos para o evento");
-
     }
 }
