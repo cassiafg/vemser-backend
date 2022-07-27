@@ -27,7 +27,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
-        String token = request.getHeader("Authorization");
+        String token = getTokenFromHeader(request);
         Optional<UsuarioEntity> optionalUsuarioEntity = tokenService.isValid(token);
 
         authenticate(optionalUsuarioEntity);
@@ -35,7 +35,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
     }
 
     public void authenticate(Optional<UsuarioEntity> optionalUsuarioEntity) {
-        if (!optionalUsuarioEntity.isEmpty()){
+        if (optionalUsuarioEntity.isPresent()){
             UsuarioEntity usuarioEntity = optionalUsuarioEntity.get();
             SecurityContextHolder.getContext().setAuthentication(
                                 new UsernamePasswordAuthenticationToken(
