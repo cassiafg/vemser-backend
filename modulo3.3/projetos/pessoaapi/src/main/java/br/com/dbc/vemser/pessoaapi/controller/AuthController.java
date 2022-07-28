@@ -4,6 +4,7 @@ import br.com.dbc.vemser.pessoaapi.dto.LoginDTO;
 import br.com.dbc.vemser.pessoaapi.dto.UsuarioCreateDTO;
 import br.com.dbc.vemser.pessoaapi.dto.UsuarioDTO;
 import br.com.dbc.vemser.pessoaapi.entity.UsuarioEntity;
+import br.com.dbc.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.dbc.vemser.pessoaapi.security.TokenService;
 import br.com.dbc.vemser.pessoaapi.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
@@ -11,10 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -51,5 +49,10 @@ public class AuthController {
     @PostMapping("/post")
     public UsuarioDTO create(@RequestBody UsuarioCreateDTO usuarioCreateDTO){
         return usuarioService.create(usuarioCreateDTO);
+    }
+
+    @GetMapping("/get-user")
+    public UsuarioDTO getUser() throws RegraDeNegocioException{
+        return usuarioService.getLoggedUser();
     }
 }
