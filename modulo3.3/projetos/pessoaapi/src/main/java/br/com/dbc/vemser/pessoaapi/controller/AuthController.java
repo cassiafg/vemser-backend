@@ -49,7 +49,7 @@ public class AuthController {
     }
 
     @PostMapping("/post")
-    public UsuarioDTO create(UsuarioCreateDTO usuarioCreateDTO){
+    public UsuarioDTO create(@RequestBody UsuarioCreateDTO usuarioCreateDTO){
         return usuarioService.create(usuarioCreateDTO);
     }
 }

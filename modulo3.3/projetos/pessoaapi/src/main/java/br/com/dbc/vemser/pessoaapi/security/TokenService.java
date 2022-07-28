@@ -21,10 +21,10 @@ public class TokenService {
 
     private static final String TOKEN_PREFIX = "Bearer ";
 
-    @Value("${jwt.secret")
+    @Value("${jwt.secret}")
     private String secret;
 
-    @Value("${jwt.expiration")
+    @Value("${jwt.expiration}")
     private String expiration;
 
     private final UsuarioService usuarioService;

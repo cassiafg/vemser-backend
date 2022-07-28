@@ -29,9 +29,13 @@ public class UsuarioService {
 
     public UsuarioDTO create(UsuarioCreateDTO usuarioCreateDTO){
         UsuarioEntity usuarioEntity = objectMapper.convertValue(usuarioCreateDTO, UsuarioEntity.class);
+
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        usuarioCreateDTO.setSenha(bCryptPasswordEncoder.encode(usuarioEntity.getSenha()));
+        String encodedSenha = bCryptPasswordEncoder.encode(usuarioEntity.getSenha());
+
+        usuarioEntity.setSenha(encodedSenha);
         usuarioRepository.save(usuarioEntity);
+
         UsuarioDTO usuarioDTO = objectMapper.convertValue(usuarioEntity, UsuarioDTO.class);
         usuarioDTO.setSenha(usuarioEntity.getSenha());
         return usuarioDTO;
